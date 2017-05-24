@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jwt.hibernate.bean.Role;
 import com.jwt.hibernate.bean.User;
+import com.jwt.hibernate.dao.RoleDAO;
 import com.jwt.hibernate.dao.UserDAO;
 
 public class UsersTableServlet extends HttpServlet {
@@ -23,6 +25,46 @@ public class UsersTableServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 			String typ = request.getParameter("typ");
+			HttpSession session = request.getSession(false);
+			
+			User userr = new User();
+			userr = (User) session.getAttribute("currentSessionUser");
+			String sessionRoleString = userr.getActiveRoleString();
+			RoleDAO rc = new RoleDAO();
+			Role sessionRole = rc.getRole(sessionRoleString);
+			
+			
+			if (sessionRole.isCreateUser()){
+				request.setAttribute("create", 1);
+			}else{
+				request.setAttribute("create", null);
+			}
+			
+			
+			if (sessionRole.isDeleteUser()){
+				request.setAttribute("delete", 1);
+			}
+			else{
+				request.setAttribute("delete", null);
+			}
+			
+			
+			if (sessionRole.isReadUser()){
+				request.setAttribute("read", 1);
+			}
+			else{
+				request.setAttribute("read", null);
+			}
+			
+			
+			if (sessionRole.isUpdateUser()){
+				request.setAttribute("update", 1);
+			}
+			else{
+				request.setAttribute("update", null);
+			}
+			
+			
 			
 			if(typ.equalsIgnoreCase("delete")){
 				long id = Long.valueOf(request.getParameter("id")).longValue();
@@ -38,6 +80,7 @@ public class UsersTableServlet extends HttpServlet {
 				
 			}
 			else if(typ.equalsIgnoreCase("read")){
+				
 				
 				UserDAO u = new UserDAO();
 				List<User> users = u.fetchAll();

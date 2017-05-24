@@ -139,7 +139,7 @@
 	<servlet>
 		<display-name>regi</display-name>
 		<servlet-name>regi</servlet-name>
-		<jsp-file>/newUser.jsp</jsp-file>
+		<jsp-file>/register.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>regi</servlet-name>
