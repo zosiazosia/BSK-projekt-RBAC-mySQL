@@ -55,6 +55,11 @@ public class WelcomeController extends HttpServlet {
 					+ "<button class='okbutton'>Nowy klient</button>"
 					+ "</center></form>");
 		}
+		if(sessionRole.isReadClient()){
+			writer.print("<form action='clients' method='post'>"
+					+ "<input type='hidden' name='typ' value='read'/>"
+				+	"<input type='submit' value='Tabela klientow' class='okbutton' /></form>" );
+		}
 		
 		//button to logout
 		writer.print("<form action='logout' method='post'>"

@@ -137,6 +137,26 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<display-name>klienci</display-name>
+		<servlet-name>klienci</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.TableClientServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>klienci</servlet-name>
+		<url-pattern>/clients</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>tableClients</display-name>
+		<servlet-name>tableClients</servlet-name>
+		<jsp-file>/tableClients.jsp</jsp-file>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>tableClients</servlet-name>
+		<url-pattern>/tableClients</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<display-name>regi</display-name>
 		<servlet-name>regi</servlet-name>
 		<jsp-file>/register.jsp</jsp-file>

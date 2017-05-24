@@ -63,13 +63,14 @@ public class ClientDAO extends HttpServlet{
 		}
 	}
 	public List<Client> fetchAll(){
+		
 		List<Client> clients = new ArrayList<Client>();
         Transaction trns = null;
         
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try{
 			trns = session.beginTransaction();            
-			String hql = "FROM client ";
+			String hql = "FROM Client ";
 			clients = session.createQuery(hql).list();
 			
 		}
