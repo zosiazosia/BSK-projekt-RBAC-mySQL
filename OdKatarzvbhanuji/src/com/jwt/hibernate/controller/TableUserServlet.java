@@ -16,7 +16,7 @@ import com.jwt.hibernate.bean.User;
 import com.jwt.hibernate.dao.RoleDAO;
 import com.jwt.hibernate.dao.UserDAO;
 
-public class UsersTableServlet extends HttpServlet {
+public class TableUserServlet extends HttpServlet {
 	
 	
 	private static final long serialVersionUID = -4396513884510909136L;
