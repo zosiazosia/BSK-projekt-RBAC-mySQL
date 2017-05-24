@@ -189,6 +189,38 @@ public class UserDAO {
 		return true;
 	}
 	
+	public boolean update(Long id, String login, String password, String name, String surname, String pesel){
+		Session session = HibernateUtil.getSessionFactory().openSession();		
+		Transaction trans = session.beginTransaction();
+		Encryptor encryptor = new Encryptor();
+		String stringQuery;
+		try {
+			stringQuery = "UPDATE User u SET u.login = '"+ login +"', u.password='"
+					+ encryptor.encrypt(password) + "', u.name = '"+name+"', u.surname='" + surname 
+					+ "', u.pesel = '" + pesel + "' WHERE u.id = '" + id + "'";
+			
+			int updateResult = session.createQuery(stringQuery).executeUpdate();
+			trans.commit();
+			return true;
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return false;
+	}
+	
 	public static List<User> fetchAll(){
 
 		List<User> users = new ArrayList<User>();
@@ -211,6 +243,7 @@ public class UserDAO {
 
 		return users;
 	}
+	
 	public boolean add(User user){
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -225,6 +258,7 @@ public class UserDAO {
 			return false;
 		}		
 	}
+	
 	public void addAdmin(){
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -244,6 +278,7 @@ public class UserDAO {
 			System.out.println("error during adding admin");
 		}		
 	}
+	
 	public void addUsers(){
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -308,8 +343,28 @@ public class UserDAO {
 		return user;
 	}
 	
+	public User get(Long id){
+		User user = new User();
+        Transaction trns = null;
+        
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			trns = session.beginTransaction();            
+			String hql = "FROM User WHERE id = '" + id + "'";
+			user = (User) session.createQuery(hql).list().get(0);
+			Hibernate.initialize(user.getRoles());
+		}
+		catch (Exception e){
+        e.printStackTrace();
+        System.out.println("error creating users list");
+	    } finally {
+	        session.flush();
+	        session.close();
+	    }
+		return user;
+	}
+	
 	public static void delete (long id){
-		
 		
 		Session session1 = HibernateUtil.getSessionFactory().openSession();		
 		Transaction trans1 = session1.beginTransaction();

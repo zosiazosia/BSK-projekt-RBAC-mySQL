@@ -29,10 +29,17 @@ public class NoSuccess extends HttpServlet {
 			writer.print(registerResult + 
 					"</br> </br> <a class = 'okbutton' href='/HibernateWebApp'>Logowanie</a>");				
 		}
+		else if (registerResult == "Edycja poprawna"){
+			writer.print(registerResult 
+					+ "</br> </br> <a class = 'okbutton' href='/HibernateWebApp/welcome'>Strona glowna</a>");				
+		}
+		else if (registerResult == "Edycja niepoprawna"){
+			writer.print(registerResult  
+					+ "</br> </br> <a class = 'okbutton' href='/HibernateWebApp/welcome'>Strona glowna</a>");				
+		}
 		else if(registerResult != null){
-			writer.print(registerResult + 
-					"</br> </br> <a class = 'okbutton' href='/HibernateWebApp/register.jsp'>Rejestracja</a>"
-					+ "</br> </br> <a class = 'okbutton' href='/HibernateWebApp'>Logowanie</a>");
+			writer.print(registerResult 
+					+ "</br> </br> <a class = 'okbutton' href='/HibernateWebApp/welcome'>Strona glowna</a>");
 		}	
 		writer.println("</center>" + "</body>" + "</html>");
 	}

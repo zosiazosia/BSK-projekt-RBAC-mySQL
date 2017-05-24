@@ -70,6 +70,25 @@ public class RoleDAO extends HttpServlet {
 		return rolesList;
 	}
 	
+	public List<Role> fetchAll(Long userId){
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		Transaction trns = null;	
+		List<Role> rolesList = new ArrayList<Role>();
+		try{
+			trns = s.beginTransaction();            
+			String hql = "FROM Role WHERE user_id='" + userId + "'";
+			rolesList = s.createQuery(hql).list();			
+		}
+		catch (Exception e){
+	        e.printStackTrace();
+	        System.out.println("error creating roles list");
+	    } finally {
+	        s.flush();
+	        s.close();
+	    }
+		return rolesList;
+	}
+	
 	
 	public void insertRoles(){
 		try {

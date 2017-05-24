@@ -43,6 +43,7 @@ public class RegisterController extends HttpServlet {
 		try {
 			UserDAO userDAO = new UserDAO();
 			String result = userDAO.addUserDetails(login, password, name, surname, pesel, roles);
+			
 			if (result == "Success") {
 				session.setAttribute("registerResult", "Rejestracja poprawna");
 			}

@@ -67,13 +67,22 @@
 	<servlet>
 		<display-name>UpdateUser</display-name>
 		<servlet-name>UpdateUser</servlet-name>
-		<jsp-file>/updateUser.jsp</jsp-file>
+		<servlet-class>com.jwt.hibernate.controller.UpdateUser</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>UpdateUser</servlet-name>
 		<url-pattern>/updateUser</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<display-name>UserUpdated</display-name>
+		<servlet-name>UserUpdated</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.UserUpdated</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserUpdated</servlet-name>
+		<url-pattern>/userUpdated</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<display-name>NoSuccess</display-name>
 		<servlet-name>NoSuccess</servlet-name>
