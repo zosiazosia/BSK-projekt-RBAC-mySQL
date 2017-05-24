@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 18-May-2017 12:52:35 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="base" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.jwt.hibernate.bean.Treatment" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="treatment">
+        <id name="name" type="string">
+            <column length="50" name="name"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="price"/>
+        </property>
+        <property generated="never" lazy="false" name="duration" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="duration"/>
+        </property>
+        <!--  set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="appointments" optimistic-lock="true" sort="unsorted" table="appointment">
+            <key on-delete="noaction">
+                <column length="50" name="fk_treatment_name"/>
+            </key>
+            <one-to-many class="com.moje.Appointment" embed-xml="true" not-found="exception"/>
+        </set -->
+    </class>
+</hibernate-mapping>

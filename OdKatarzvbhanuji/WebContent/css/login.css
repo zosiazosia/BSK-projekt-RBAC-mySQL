@@ -1,0 +1,60 @@
+
+body{
+	margin-top: 100px;
+	background-color: #FFFFFF;
+	
+}
+
+.header{
+	color:#333333;
+}
+
+.inputbox{
+	background-color: #FFFFFF;
+	color: #333333;
+	width: 200px;
+	border:1px solid #808080;
+	margin: 5px 0 5px 0;
+	padding: 5px;
+}
+
+.inputbox:hover{
+	border-color:#0080ff;
+}
+
+.okbutton{
+	border: 0.3px solid #FFFFFF;
+	padding: 5px 10px;
+	background-color:#FFFFFF;
+	color: #0080ff;
+	text-decoration: none;
+}
+
+.okbutton:hover{
+	border: 0.3px solid #c0c0c0;
+}
+/*Chrome/Opera/Safari*/
+::-webkit-input-placeholder{
+	color:#91868d;
+}
+/*Firefox*/
+::-moz-placeholder{
+	color:#91868d;
+}
+/*IE 10+*/
+:-ms-input-placeholder{
+	color:#91868d;
+}
+/*Firefox 18-*/
+:-moz-placeholder{
+	color:#91868d;
+}
+
+#loginbutton{
+	margin: 10px 10px 10px 5px;
+}
+
+#register{
+	margin: 10px 5px;
+	background-color:#000000;
+}

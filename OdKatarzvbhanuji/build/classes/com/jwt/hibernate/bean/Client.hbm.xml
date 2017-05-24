@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 18-May-2017 12:52:35 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="base" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.jwt.hibernate.bean.Client" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="client">
+        <id name="id" type="java.lang.Long">
+            <column name="id"/>
+            <generator class="increment"/>
+        </id>
+        <property generated="never" lazy="false" name="birthYear" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="birth_year"/>
+        </property>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="surname" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="surname" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pesel" optimistic-lock="true" type="string" unique="false">
+            <column length="11" name="pesel"/>
+        </property>
+        <property generated="never" lazy="false" name="phone" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="phone"/>
+        </property>
+        <!-- many-to-one class="com.jwt.hibernate.bean.Payment" embed-xml="true" fetch="select" insert="true" name="payment" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="payment_id"/>
+        </many-to-one >
+        <set  name="payments" cascade="all" table="appointment" fetch="select" inverse="true" lazy="true" mutable="true" optimistic-lock="true" sort="unsorted">
+            <key column="client_id"/>
+            <one-to-many class="com.jwt.hibernate.bean.Payment" />
+        </set-->
+        <set  name="appointments" cascade="all"><!-- table="appointment" fetch="select" inverse="true" lazy="true" mutable="true" optimistic-lock="true" sort="unsorted" -->
+            <key column="client_id"/>
+            <one-to-many class="com.jwt.hibernate.bean.Appointment" />
+        </set>
+    </class>
+</hibernate-mapping>

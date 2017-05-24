@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>HibernateWebApp</display-name>
+	
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>com.jwt.hibernate.controller.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/addRole</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<display-name>Register</display-name>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.RegisterController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>NewRole</display-name>
+		<servlet-name>NewRole</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.NewRole</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewRole</servlet-name>
+		<url-pattern>/roleAdded</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>NewClient</display-name>
+		<servlet-name>NewClient</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.NewClient</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewClient</servlet-name>
+		<url-pattern>/clientAdded</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>AddClient</display-name>
+		<servlet-name>AddClient</servlet-name>
+		<jsp-file>/newClient.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddClient</servlet-name>
+		<url-pattern>/addClient</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>AddRole</display-name>
+		<servlet-name>AddRole</servlet-name>
+		<jsp-file>/newRole.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddRole</servlet-name>
+		<url-pattern>/addRole</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>UpdateUser</display-name>
+		<servlet-name>UpdateUser</servlet-name>
+		<jsp-file>/updateUser.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateUser</servlet-name>
+		<url-pattern>/updateUser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>NoSuccess</display-name>
+		<servlet-name>NoSuccess</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.NoSuccess</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoSuccess</servlet-name>
+		<url-pattern>/NoSuccess</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>LoggedIn</display-name>
+		<servlet-name>LogInController</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.LogInController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogInController</servlet-name>
+		<url-pattern>/LoggedIn</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>Welcome</display-name>
+		<servlet-name>WelcomeController</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.WelcomeController</servlet-class>
+		<!-- jsp-file>/welcome.jsp</jsp-file -->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WelcomeController</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>
+		
+	
+	<servlet>
+		<display-name>Logout</display-name>
+		<servlet-name>LogoutController</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.LogoutController</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>LogoutController</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>uzytkownicy</display-name>
+		<servlet-name>uzytkownicy</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.UsersTableServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uzytkownicy</servlet-name>
+		<url-pattern>/users</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>table</display-name>
+		<servlet-name>table</servlet-name>
+		<jsp-file>/usersTable.jsp</jsp-file>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>table</servlet-name>
+		<url-pattern>/tabelki</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>regi</display-name>
+		<servlet-name>regi</servlet-name>
+		<jsp-file>/newUser.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>regi</servlet-name>
+		<url-pattern>/regi</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

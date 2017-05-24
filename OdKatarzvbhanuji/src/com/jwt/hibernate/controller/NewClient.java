@@ -1,0 +1,44 @@
+package com.jwt.hibernate.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.jwt.hibernate.bean.Client;
+import com.jwt.hibernate.dao.HibernateUtil;
+
+public class NewClient extends HttpServlet {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		Transaction trns = session.beginTransaction();   
+		PrintWriter writer = response.getWriter();
+		Client client = new Client();
+		
+		client.setName(request.getParameter("name"));
+		client.setSurname(request.getParameter("surname"));
+		client.setBirthYear(Integer.parseInt(request.getParameter("birthYear")));
+		client.setPesel(request.getParameter("pesel"));
+		client.setPhone(request.getParameter("phone"));
+		client.setAppointments(null);
+		
+		session.save(client);
+		trns.commit();
+
+		writer.println("<html> <link href='css/login.css' rel='stylesheet' type='text/css' />" 
+			+ "<body> <center> </br> Klient dodany pomyslnie");
+
+		writer.println( "<form method='get' action='welcome'> "
+				+ "<input type='submit' value='Powrot' class='okbutton' />" 
+				+ "</form> </center>" + "</body>" + "</html>");
+		
+	}
+}

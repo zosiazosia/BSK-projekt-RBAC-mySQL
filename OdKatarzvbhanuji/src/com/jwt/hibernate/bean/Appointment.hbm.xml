@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 18-May-2017 12:52:35 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="base" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.jwt.hibernate.bean.Appointment" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="appointment">
+        <id name="id" type="java.lang.Long">
+            <column name="id"/>
+            <generator class="increment"/>
+        </id>
+        <!-- many-to-one class="com.moje.Client" embed-xml="true" fetch="select" insert="true" name="client" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="client_id"/>
+        </many-to-one>>
+        <many-to-one name="payment_id" class="com.jwt.hibernate.bean.Payment" cascade="save-update"/>
+        <set  name="payments" cascade="all" table="appointment" fetch="select" inverse="true" lazy="true" mutable="true" optimistic-lock="true" sort="unsorted" >
+            <key column="payment_id"/>
+            <one-to-many class="com.jwt.hibernate.bean.Payment" />
+        </set-->
+        <property generated="never" lazy="false" name="cost" optimistic-lock="true" type="java.lang.Float" unique="false">
+            <column name="cost" precision="12" scale="0"/>
+        </property>
+        
+        <set name="treatments" table="app_treat" inverse="false"
+			 lazy="true" fetch="select" cascade="all">
+			<key>
+				<column name="app_id" not-null="true" />
+			</key>	
+			<many-to-many entity-name="com.jwt.hibernate.bean.Treatment">
+				<column name="treat_name" not-null="true"/>
+			</many-to-many>
+		</set>
+        
+    </class>
+</hibernate-mapping>

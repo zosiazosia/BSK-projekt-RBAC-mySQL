@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 18-May-2017 12:52:35 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="base" dynamic-insert="false" dynamic-update="false" 
+    mutable="true" name="com.jwt.hibernate.bean.Role" optimistic-lock="version" 
+    polymorphism="implicit" select-before-update="false" table="role">
+    
+        <id name="id" type="java.lang.Long">
+        <column name="id" unique="true"></column>
+            <generator class="increment"/>
+        </id>
+        <property generated="never" lazy="false" name="type" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="type" not-null="true" unique="true"/>
+        </property>
+        
+        
+	 	<property column="createRole" name="createRole" type="boolean" />
+	 	<property column="readRole" name="readRole" type="boolean" />
+	 	<property column="updateRole" name="updateRole" type="boolean" />
+	 	<property column="deleteRole" name="deleteRole" type="boolean" />
+	 	
+	 	<property column="createUser" name="createUser" type="boolean" />
+	 	<property column="readUser" name="readUser" type="boolean" />
+	 	<property column="updateUser" name="updateUser" type="boolean" />
+	 	<property column="deleteUser" name="deleteUser" type="boolean" />
+	 	
+	 	<property column="createClient" name="createClient" type="boolean" />
+	 	<property column="readClient" name="readClient" type="boolean" />
+	 	<property column="updateClient" name="updateClient" type="boolean" />
+	 	<property column="deleteClient" name="deleteClient" type="boolean" />
+	 	
+	 	<property column="createAppointment" name="createAppointment" type="boolean" />
+	 	<property column="readAppointment" name="readAppointment" type="boolean" />
+	 	<property column="updateAppointment" name="updateAppointment" type="boolean" />
+	 	<property column="deleteAppointment" name="deleteAppointment" type="boolean" />
+	 	
+	 	<property column="createTreatment" name="createTreatment" type="boolean" />
+	 	<property column="readTreatment" name="readTreatment" type="boolean" />
+	 	<property column="updateTreatment" name="updateTreatment" type="boolean" />
+	 	<property column="deleteTreatment" name="deleteTreatment" type="boolean" />
+        
+        
+    </class>
+</hibernate-mapping>
