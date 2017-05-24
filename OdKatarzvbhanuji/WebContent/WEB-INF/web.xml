@@ -107,7 +107,6 @@
 		<display-name>Welcome</display-name>
 		<servlet-name>WelcomeController</servlet-name>
 		<servlet-class>com.jwt.hibernate.controller.WelcomeController</servlet-class>
-		<!-- jsp-file>/welcome.jsp</jsp-file -->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>WelcomeController</servlet-name>
@@ -128,7 +127,7 @@
 	<servlet>
 		<display-name>uzytkownicy</display-name>
 		<servlet-name>uzytkownicy</servlet-name>
-		<servlet-class>com.jwt.hibernate.controller.TableUserServlet</servlet-class>
+		<servlet-class>com.jwt.hibernate.controller.UsersTableServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>uzytkownicy</servlet-name>

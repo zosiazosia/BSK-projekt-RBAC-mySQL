@@ -66,7 +66,6 @@ public class UsersTableServlet extends HttpServlet {
 			
 			
 			if(typ.equalsIgnoreCase("update")){
-				System.out.println("TUTAJ " + typ);
 				request.getRequestDispatcher("updateUser").forward(request, response);				
 
 			}else if(typ.equalsIgnoreCase("delete")){
@@ -96,8 +95,7 @@ public class UsersTableServlet extends HttpServlet {
 				request.getRequestDispatcher("tabelki").forward(request, response);
 				
 				
-			}else{ //if(typ.equalsIgnoreCase("add")){
-				//create
+			}else{ 
 				
 				request.getRequestDispatcher("regi").forward(request, response);
 				
