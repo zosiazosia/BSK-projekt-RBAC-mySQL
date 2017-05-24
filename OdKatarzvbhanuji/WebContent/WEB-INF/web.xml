@@ -128,7 +128,7 @@
 	<servlet>
 		<display-name>uzytkownicy</display-name>
 		<servlet-name>uzytkownicy</servlet-name>
-		<servlet-class>com.jwt.hibernate.controller.UsersTableServlet</servlet-class>
+		<servlet-class>com.jwt.hibernate.controller.TableUserServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>uzytkownicy</servlet-name>
@@ -163,6 +163,46 @@
 	<servlet-mapping>
 		<servlet-name>tableClients</servlet-name>
 		<url-pattern>/tableClients</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<display-name>role</display-name>
+		<servlet-name>role</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.TableRoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>role</servlet-name>
+		<url-pattern>/roles</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>tableRoles</display-name>
+		<servlet-name>tableRoles</servlet-name>
+		<jsp-file>/tableRoles.jsp</jsp-file>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>tableRoles</servlet-name>
+		<url-pattern>/tableRoles</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>zabiegi</display-name>
+		<servlet-name>zabiegi</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.TableTreatmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>zabiegi</servlet-name>
+		<url-pattern>/treatments</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>tableTreatment</display-name>
+		<servlet-name>tableTreatment</servlet-name>
+		<jsp-file>/tableTreatments.jsp</jsp-file>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>tableTreatment</servlet-name>
+		<url-pattern>/tableTreatments</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
