@@ -71,6 +71,12 @@ public class WelcomeController extends HttpServlet {
 				+	"<input type='submit' value='Tabela rol' class='okbutton' /></form>" );
 		}
 		
+		if(sessionRole.isReadTreatment()){
+			writer.print("<form action='treatments' method='post'>"
+					+ "<input type='hidden' name='typ' value='read'/>"
+				+	"<input type='submit' value='Tabela zabiegow' class='okbutton' /></form>" );
+		}
+		
 		//button to logout
 		writer.print("<form action='logout' method='post'>"
 			+ 	"<input type='submit' value='Logout' class='okbutton' /></form>" );

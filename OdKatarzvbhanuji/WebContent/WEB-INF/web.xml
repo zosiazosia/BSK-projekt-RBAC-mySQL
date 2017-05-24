@@ -177,6 +177,26 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<display-name>zabiegi</display-name>
+		<servlet-name>zabiegi</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.TableTreatmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>zabiegi</servlet-name>
+		<url-pattern>/treatments</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>tableTreatment</display-name>
+		<servlet-name>tableTreatment</servlet-name>
+		<jsp-file>/tableTreatments.jsp</jsp-file>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>tableTreatment</servlet-name>
+		<url-pattern>/tableTreatments</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<display-name>regi</display-name>
 		<servlet-name>regi</servlet-name>
 		<jsp-file>/register.jsp</jsp-file>
