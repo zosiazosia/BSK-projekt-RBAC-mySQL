@@ -97,9 +97,11 @@ public class TableClientServlet extends HttpServlet {
 				
 			}else if(typ.equalsIgnoreCase("update")){
 				
-				
-				
-			}else{ //if(typ.equalsIgnoreCase("add")){
+			}
+			else if(typ.equalsIgnoreCase("add")){
+				response.sendRedirect("newClient");
+			}
+			else{ //if(typ.equalsIgnoreCase("add")){
 				//create
 				
 				request.getRequestDispatcher("welcome").forward(request, response);
