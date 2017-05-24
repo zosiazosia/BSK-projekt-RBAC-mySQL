@@ -156,6 +156,26 @@
 		<url-pattern>/tableClients</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<display-name>wizyty</display-name>
+		<servlet-name>wizyty</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.TableAppointmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>wizyty</servlet-name>
+		<url-pattern>/appointments</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<display-name>tableAppointments</display-name>
+		<servlet-name>tableAppointments</servlet-name>
+		<jsp-file>/tableAppointment.jsp</jsp-file>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>tableAppointments</servlet-name>
+		<url-pattern>/tableAppointments</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<display-name>regi</display-name>
 		<servlet-name>regi</servlet-name>

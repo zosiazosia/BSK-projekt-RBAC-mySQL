@@ -60,6 +60,11 @@ public class WelcomeController extends HttpServlet {
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Tabela klientow' class='okbutton' /></form>" );
 		}
+		if(sessionRole.isReadAppointment()){
+			writer.print("<form action='appointments' method='post'>"
+					+ "<input type='hidden' name='typ' value='read'/>"
+				+	"<input type='submit' value='Tabela wizyt' class='okbutton' /></form>" );
+		}
 		
 		//button to logout
 		writer.print("<form action='logout' method='post'>"
