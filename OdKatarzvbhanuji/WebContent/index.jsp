@@ -40,6 +40,7 @@
 						RoleDAO rd = new RoleDAO();
 						rd.insertRoles();
 						UserDAO ud = new UserDAO();
+						
 						ud.addAdmin();	
 						ud.addUsers();
 						ClientDAO cd = new ClientDAO();
@@ -67,7 +68,7 @@
 							<option value="<%=type%>" />
 							<%
 						}
-						
+												
 						%>
 						</datalist>
 					</td>
@@ -80,12 +81,6 @@
 
 	</form>
 	
-	<form method="post" action="users">
-		<input type="hidden" name="typ" value="read"/>
-		<center>
-			<button class="okbutton" id="registerbutton">uzytkownicyyyyy</button>
-		</center>
-	</form>
 
 </body>
 </html>
