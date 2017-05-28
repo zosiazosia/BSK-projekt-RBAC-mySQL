@@ -29,7 +29,7 @@ public class User implements java.io.Serializable {
 	private String userName;
 	private String email;
 	private Set<Role> roles = new HashSet<Role>(0);
-	private Set appointments = new HashSet(0);	
+	private Set<Appointment> appointments = new HashSet<Appointment>(0);	
 	private String activeRoleString = null;
 
 	public User() {

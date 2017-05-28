@@ -74,7 +74,7 @@ public class TableClientServlet extends HttpServlet {
 				long id = Long.valueOf(request.getParameter("id")).longValue();
 				
 				ClientDAO c = new ClientDAO();
-				//c.delete(id);
+				c.delete(id);
 				List<Client> clients = c.fetchAll();
 				
 				request.setAttribute("clientsList", clients);

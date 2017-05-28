@@ -1,5 +1,6 @@
 package com.jwt.hibernate.dao;
 
+import java.io.Serializable;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.jdbc.ConnectionManager;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
+import com.jwt.hibernate.bean.Appointment;
 import com.jwt.hibernate.bean.Role;
 import com.jwt.hibernate.bean.User;
 import com.jwt.hibernate.controller.Encryptor;
@@ -292,15 +294,18 @@ public class UserDAO {
 			roles.add(roleDao.getRole("Asystent"));
 			user.setRoles(roles);			
 			session.save(user);
-			
-			user = new User("n", encryptor.encrypt("n"));
-			roles = new HashSet<Role>();
-			roles.add(roleDao.getRole("Dentysta"));
-			roles.add(roleDao.getRole("Asystent"));
-			user.setRoles(roles);			
-			session.save(user);
-			
 			trns.commit();
+			
+			Session session1 = HibernateUtil.getSessionFactory().openSession();
+			Transaction trns1 = session1.beginTransaction();
+			User user1 = new User("n", encryptor.encrypt("n"));
+			Set<Role> roles1 = new HashSet<Role>();
+			roles1.add(roleDao.getRole("Dentysta"));
+			roles1.add(roleDao.getRole("Asystent"));
+			user1.setRoles(roles1);			
+			session1.save(user1);
+			trns1.commit();
+			
 		}
 		catch (Exception ex){
 			ex.printStackTrace();
@@ -309,14 +314,26 @@ public class UserDAO {
 	}
 	
 	public boolean delete(User user){
+		
+		
+		//Query query = session1.createQuery("SELECT r.type FROM User u JOIN u.roles r where u.id=1");
+		
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();		
 		Transaction trans = session.beginTransaction();
-		int deleteCount = session.createQuery("delete from user where login = :login") 
+		Query query = session.createQuery("SELECT r.type FROM User u JOIN u.roles r where u.id=1");
+		
+		/*int deleteCount = session.createQuery("delete from user where login = :login") 
 			    .setParameter("login", user.getLogin())
 			    .executeUpdate();
 		
+		*/
 		
-		System.out.println("delete count: " + deleteCount);
+		@SuppressWarnings({ "unused", "rawtypes" })
+		List result = query.list();
+		
+		
+		//System.out.println("delete count: " + deleteCount);
 		trans.commit();
 				
 		return false;
@@ -366,45 +383,21 @@ public class UserDAO {
 	
 	public static void delete (long id){
 		
-		Session session1 = HibernateUtil.getSessionFactory().openSession();		
-		Transaction trans1 = session1.beginTransaction();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 		
+		Transaction trn = session.beginTransaction();
+		Long a = new Long(id);
 		
-		try {
-			  // your code
-			
-			  String hql1 = "delete from user_role where user_id= :id";
-			  Query query1 = session1.createQuery(hql1);		  
-			  query1.setString("id", Long.toString(id));		  
-			  System.out.println(query1.executeUpdate());
-			  trans1.commit();
+        User user = (User) session.get(User.class,a);
+        String roles = "DELETE FROM user_role where user_id=" +a.toString();
+        session.createSQLQuery(roles).executeUpdate();
+        //String appointments = "DELETE FROM user_role where user_id=" +a.toString();
 
-			  
-			} catch (Throwable t) {
-			  trans1.rollback();
-			  System.out.println("errory");		  
-			  throw t;
-			}
-		
-
-		  // your code
-			
-			Session session2 = HibernateUtil.getSessionFactory().openSession();		
-			Transaction trans2 =session2.beginTransaction();
-			
-			try {		  
-		  String hql2 = "delete from user where id= :id";
-		  Query query2 = session2.createQuery(hql2);		  
-		  query2.setString("id", Long.toString(id));		  
-		  System.out.println(query2.executeUpdate());
-		  trans2.commit();
-
-		  
-		} catch (Throwable t) {
-		  trans2.rollback();
-		  System.out.println("errory");		  
-		  throw t;
-		}
+            
+        session.delete(user);
+        trn.commit();
+       
+        
 		
 	}
 	

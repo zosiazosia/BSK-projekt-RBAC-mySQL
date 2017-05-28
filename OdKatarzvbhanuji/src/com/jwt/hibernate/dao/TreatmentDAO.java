@@ -38,5 +38,13 @@ public class TreatmentDAO {
 	}
 
 
-
+	public static void delete(String name){
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();			
+		Transaction trn = session.beginTransaction();			
+        Treatment treatment = (Treatment) session.get(Treatment.class,name);                   
+        session.delete(treatment);
+        trn.commit();
+        
+	}
 }

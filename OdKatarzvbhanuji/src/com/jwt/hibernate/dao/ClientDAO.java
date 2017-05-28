@@ -83,4 +83,22 @@ public class ClientDAO extends HttpServlet{
 	    }
 		return clients;
 	}
+	public void delete(long id){
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		
+		Transaction trn = session.beginTransaction();
+		Long a = new Long(id);
+		
+		Client client = (Client) session.get(Client.class,a);
+		Set<Appointment> app = client.getAppointments();
+		AppointmentDAO dao = new AppointmentDAO();
+		
+		for(Appointment el : app){
+			dao.delete(el.getId());
+		}
+		            
+        session.delete(client);
+        trn.commit();
+       
+	}
 }

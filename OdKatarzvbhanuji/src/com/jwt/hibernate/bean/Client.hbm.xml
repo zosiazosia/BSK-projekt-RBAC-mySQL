@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 18-May-2017 12:52:35 by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="all" default-lazy="true">
     <class catalog="base" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.jwt.hibernate.bean.Client" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="client">
         <id name="id" type="java.lang.Long">
             <column name="id"/>

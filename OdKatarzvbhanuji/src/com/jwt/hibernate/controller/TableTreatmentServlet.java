@@ -73,10 +73,10 @@ public class TableTreatmentServlet extends HttpServlet {
 			if(typ.equalsIgnoreCase("delete")){
 				
 				
-				long id = Long.valueOf(request.getParameter("id")).longValue();
+				String name = request.getParameter("id");
 				
 				TreatmentDAO c = new TreatmentDAO();
-				//c.delete(id);
+				c.delete(name);				
 				List<Treatment> treatments = c.fetchAll();
 				
 				request.setAttribute("treatmentsList", treatments);

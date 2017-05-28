@@ -75,7 +75,7 @@ public class TableAppointmentServlet extends HttpServlet {
 				long id = Long.valueOf(request.getParameter("id")).longValue();
 				
 				AppointmentDAO a = new AppointmentDAO();
-				//c.delete(id);
+				a.delete(id);
 				List<Appointment> appointments = a.fetchAll();
 				
 				request.setAttribute("appointmentsList", appointments);

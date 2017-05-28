@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-	<class name="com.jwt.hibernate.bean.User" table="USER">
+<hibernate-mapping default-cascade="all">
+	<class name="com.jwt.hibernate.bean.User" table="USER" >
 		<id column="id" name="id" type="java.lang.Long" >
 		<generator class="increment"/></id>
 		<property column="login" name="login" type="java.lang.String" unique="true"/>
@@ -13,7 +13,7 @@
 	 	<property column="email" name="email" type="java.lang.String" />
 	 	<property column="activeRoleString" name="activeRoleString" type="java.lang.String" />
 		
-		<set name="roles" table="user_role" inverse="false" lazy="true" fetch="select" cascade="delete">
+		<set name="roles" table="user_role" inverse="false" lazy="true" fetch="select" cascade="all">
 			<key>
 				<column name="user_id" not-null="true" />
 			</key>	
