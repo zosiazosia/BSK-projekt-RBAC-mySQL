@@ -79,7 +79,7 @@ public class UserDAO {
 				user.setRoles(_roles);
 				
 				Transaction transaction = session.beginTransaction();			
-				session.save(user); 			
+				session.save(user); 
 				transaction.commit();
 				System.out.println("\n\n Details Added \n");
 			}
@@ -180,6 +180,13 @@ public class UserDAO {
 		return user;
 	}
 
+	public Set<Role> getRoles(User user){
+		Set<Role> roles = new HashSet<Role>();
+		Hibernate.initialize(user.getRoles());		
+		roles = (Set<Role>) user.getRoles();
+		return roles;
+	}
+	
 	public static boolean logout (User user){
 		Session session = HibernateUtil.getSessionFactory().openSession();		
 		Transaction trans = session.beginTransaction();
@@ -188,6 +195,42 @@ public class UserDAO {
 		int updateResult = session.createQuery(stringQuery).executeUpdate();
 		trans.commit();
 		
+		return true;
+	}
+	
+	public boolean update(User user, Long id){
+		Session session = HibernateUtil.getSessionFactory().openSession();		
+		Transaction trans = session.beginTransaction();
+		Encryptor encryptor = new Encryptor();
+		user.setId(id);
+		try {
+			String password = encryptor.encrypt(user.getPassword());
+			user.setPassword(password);
+			Set<Role> roles = user.getRoles();
+			Set<Role> _roles = new HashSet<Role>(0);
+			if(roles != null){
+				trans = session.beginTransaction();
+				String hql = "FROM Role";
+				List<Role> roleList = new ArrayList<Role>();
+				roleList = session.createQuery(hql).list();
+				
+				for (Role role : roles){
+					for (Role roleFromDB : roleList){
+						if (role.getType().equals(roleFromDB.getType())) {
+							_roles.add(roleFromDB);
+						}
+					}
+				}
+			} 
+			user.setRoles(_roles);
+			
+			session.update(user);
+			trans.commit();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
 		return true;
 	}
 	
@@ -201,7 +244,8 @@ public class UserDAO {
 					+ encryptor.encrypt(password) + "', u.name = '"+name+"', u.surname='" + surname 
 					+ "', u.pesel = '" + pesel + "' WHERE u.id = '" + id + "'";
 			
-			int updateResult = session.createQuery(stringQuery).executeUpdate();
+		//	int updateResult = session.createQuery(stringQuery).executeUpdate();
+		//	session.update(user);
 			trans.commit();
 			return true;
 		} catch (InvalidKeyException e) {

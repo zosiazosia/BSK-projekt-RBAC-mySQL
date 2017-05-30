@@ -76,7 +76,7 @@ public class RoleDAO extends HttpServlet {
 		List<Role> rolesList = new ArrayList<Role>();
 		try{
 			trns = s.beginTransaction();            
-			String hql = "FROM Role WHERE user_id='" + userId + "'";
+			String hql = "FROM role r WHERE ur.user_id='" + userId + "' AND r.id=ur.role_id";
 			rolesList = s.createQuery(hql).list();			
 		}
 		catch (Exception e){

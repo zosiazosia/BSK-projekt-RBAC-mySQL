@@ -35,10 +35,8 @@ public class UpdateUser extends HttpServlet {
 		UserDAO uDAO = new UserDAO();
 		Long id = Long.valueOf(request.getParameter("id")).longValue();
 		user = uDAO.get(id);
-		Hibernate.initialize(user.getRoles());
-		List<Role> userRoleList = new ArrayList<Role>(0);
-		RoleDAO rDAO = new RoleDAO();
-		userRoleList = rDAO.fetchAll(id);
+		Set<Role> userRoleList = new HashSet<Role>(0);
+		userRoleList = (Set<Role>)uDAO.getRoles(user);
 		PrintWriter writer = response.getWriter();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		Transaction trns = null;	
@@ -63,30 +61,39 @@ public class UpdateUser extends HttpServlet {
 					+ "<tr><td><input placeholder='imie' type='text' name='name' value=" + user.getName() + " class='inputbox'/></td></tr>"
 					+ "<tr><td><input placeholder='nazwisko' type='text' name='surname' value=" + user.getSurname() + " class='inputbox'/></td></tr>"
 					+ "<tr><td><input placeholder='PESEL' type='text' name='pesel' value=" + user.getPesel() + " class='inputbox'/></td></tr>");
+				
+			String[] rolesTable = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"};
+			boolean[] boolTable = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+			
+			int i = 0;
+			for (Role role : rolesList){
+				String type = role.getType();
+				boolean printed =false;
+				for (Role r : userRoleList){
 					
+					if (r.getType().equals(role.getType())){
+						writer.print("<tr><td><input type='checkbox' name=" + rolesTable[i++] + " value=" 
+								+ type + " checked />" + type + "</td></tr></br>");
+						printed = true;
+						break;
+					}
+				}
+				if (!printed){
+					writer.print("<tr><td><input type='checkbox' name=" + rolesTable[i++] + " value=" 
+							+ type + " />" + type + "</td></tr></br>");
+				}
+			}
+			writer.print("<input type='hidden' name='rolesNumber' value=" + i + " />"); 
+			
+			
+			writer.print("<input type='hidden' name='id' value=" + id + " /></td></tr></tbody></table><p />"
+					+ "<input type='submit' value='Zapisz' class='okbutton' /></center></form></body></html>");
+			
 		} catch (InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchAlgorithmException
 				| NoSuchPaddingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	/*	String[] rolesTable = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
-		int i = 0;
-		for (Role role : rolesList){
-			String type = role.getType();
-			if (userRoleList.contains(role)) {
-				writer.print("<tr><td><input type='checkbox' name=" + rolesTable[i++] + " value=" 
-						+ type + " checked />" + type + "</br>");
-			}
-			else {
-				writer.print("<input type='checkbox' name=" + rolesTable[i++] + " value=" 
-						+ type + " />" + type + "</br>");				
-			}
-		}
-		writer.print("<input type='hidden' name='rolesNumber' value=" + i + " />"); */
-		writer.print("<input type='hidden' name='id' value=" + id + " /></td></tr></tbody></table><p />"
-				+ "<input type='submit' value='Zapisz' class='okbutton' /></center></form></body></html>");
-		
-		
+		} 
 		
 		
 	}

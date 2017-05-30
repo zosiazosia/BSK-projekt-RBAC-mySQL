@@ -16,6 +16,7 @@ import com.jwt.hibernate.dao.HibernateUtil;
  */
 public class User implements java.io.Serializable {
 
+	private static final long serialVersionUID = -5940206740433951461L;
 	private Long id;
 	private boolean valid;
 	private String login;
@@ -50,9 +51,19 @@ public class User implements java.io.Serializable {
 		this.pesel = pesel;
 		this.activeRoleString = null;
 	}
+	
+	public User(String login, String password, String name, String surname, String pesel, Set<Role> roles) {
+		this.login = login;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.pesel = pesel;
+		this.roles = roles;
+		this.activeRoleString = null;
+	}
 
 	public User(String login, String password, String name, String surname, String pesel, String phone, String city,
-			String address, String userName, String email, Set<Role> roles, Set appointments, String activeRoleId) {
+			String address, String userName, String email, Set<Role> roles, Set<Appointment> appointments, String activeRoleId) {
 		this.login = login;
 		this.password = password;
 		this.name = name;
