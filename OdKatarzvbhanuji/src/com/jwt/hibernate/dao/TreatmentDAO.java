@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.jwt.hibernate.bean.Role;
 import com.jwt.hibernate.bean.Treatment;
 import com.jwt.hibernate.bean.Treatment;
 import com.jwt.hibernate.bean.User;
@@ -40,11 +41,18 @@ public class TreatmentDAO {
 
 	public static void delete(String name){
 		
-		Session session = HibernateUtil.getSessionFactory().openSession();			
-		Transaction trn = session.beginTransaction();			
-        Treatment treatment = (Treatment) session.get(Treatment.class,name);                   
-        session.delete(treatment);
+
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		
+		Transaction trn = session.beginTransaction();
+		
+        Treatment treat = (Treatment) session.get(Treatment.class,name);
+        String treats = "DELETE FROM app_treat where treat_name='"+name+"'";
+        session.createSQLQuery(treats).executeUpdate();
+                    
+        session.delete(treat);
         trn.commit();
+		
         
 	}
 }

@@ -30,26 +30,13 @@
                     <tr>
                         <th>Id</th>
                         <th>Type</th>
-                        <th>Update User</th>
-                        <th>Delete User</th>
-                        <th>Read User</th>
-                        <th>Create User</th>  
-                        <th>Update Client</th>
-                        <th>Delete Client</th>
-                        <th>Read Client</th>
-                        <th>Create Client</th>
-                        <th>Update Role</th>
-                        <th>Delete Role</th>
-                        <th>Read Role</th>
-                        <th>Create Role</th>
-                        <th>Update Appointment</th>
-                        <th>Delete Appointment</th>
-                        <th>Read Appointment</th>
-                        <th>Create Appointment</th>
-                        <th>Update Treatment</th>
-                        <th>Delete Treatment</th>
-                        <th>Read Treatment</th>
-                        <th>Create Treatment</th>           
+                        <th>User</th>
+                        <th>Client</th>
+                        <th>Role</th>
+
+                        <th>Appointment</th>
+
+                        <th>Treatment</th>           
                         
                         <c:if test="${not empty delete}"> 
                         	<th>delete</th>
@@ -64,29 +51,86 @@
                         <tr>
                         	<th><c:out value="${el.id}"/></th>
                         	<th><c:out value="${el.type}"/></th>
-                        	<th><c:out value="${el.updateUser}"/></th>
-                        	<th><c:out value="${el.deleteUser}"/></th>
-                        	<th><c:out value="${el.readUser}"/></th>
-                        	<th><c:out value="${el.createUser}"/></th>  
-                        	<th><c:out value="${el.updateClient}"/></th>
-                        	<th><c:out value="${el.deleteClient}"/></th>
-                        	<th><c:out value="${el.readClient}"/></th>
-                        	<th><c:out value="${el.createClient}"/></th>   
-                        	   
-                        	<th><c:out value="${el.updateRole}"/></th>
-                        	<th><c:out value="${el.deleteRole}"/></th>
-                        	<th><c:out value="${el.readRole}"/></th>
-                        	<th><c:out value="${el.createRole}"/></th>   
+                        	<th>
+                        	<c:set var="U" value="${el.updateUser eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readUser eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteUser eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createUser eq true ? 'C': '-'}"/>
                         	
-                        	<th><c:out value="${el.updateAppointment}"/></th>
-                        	<th><c:out value="${el.deleteAppointment}"/></th>
-                        	<th><c:out value="${el.readAppointment}"/></th>
-                        	<th><c:out value="${el.createAppointment}"/></th>  
+                        	<%
+						    String resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
                         	
-                        	<th><c:out value="${el.updateTreatment}"/></th>
-                        	<th><c:out value="${el.deleteTreatment}"/></th>
-                        	<th><c:out value="${el.readTreatment}"/></th>
-                        	<th><c:out value="${el.createTreatment}"/></th>  
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	<th>
+                        	<c:set var="U" value="${el.updateClient eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readClient eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteClient eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createClient eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	<th>
+                        	<c:set var="U" value="${el.updateRole eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readRole eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteRole eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createRole eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	<th>
+                        	<c:set var="U" value="${el.updateAppointment eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readAppointment eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteAppointment eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createAppointment eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	                        	                        	<th>
+                        	<c:set var="U" value="${el.updateTreatment eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readTreatment eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteTreatment eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createTreatment eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
                         	                 	
                         	<c:if test="${not empty delete}"> 
 	                        	<th>

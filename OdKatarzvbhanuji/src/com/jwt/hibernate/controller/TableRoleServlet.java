@@ -74,7 +74,7 @@ public class TableRoleServlet extends HttpServlet {
 				long id = Long.valueOf(request.getParameter("id")).longValue();
 				
 				RoleDAO c = new RoleDAO();
-				//c.delete(id);
+				c.delete(id);
 				List<Role> roles = c.fetchAll();
 				
 				request.setAttribute("rolesList", roles);

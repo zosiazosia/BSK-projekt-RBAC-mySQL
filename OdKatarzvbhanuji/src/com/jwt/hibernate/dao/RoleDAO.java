@@ -88,7 +88,23 @@ public class RoleDAO extends HttpServlet {
 	    }
 		return rolesList;
 	}
-	
+	public static void delete (long id){
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		
+		Transaction trn = session.beginTransaction();
+		Long a = new Long(id);
+		
+        Role role = (Role) session.get(Role.class,a);
+        String roles = "DELETE FROM user_role where role_id=" +a.toString();
+        session.createSQLQuery(roles).executeUpdate();
+                    
+        session.delete(role);
+        trn.commit();
+       
+        
+		
+	}
 	
 	public void insertRoles(){
 		try {
