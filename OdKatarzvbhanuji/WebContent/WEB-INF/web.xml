@@ -244,6 +244,17 @@
 		<url-pattern>/newClient</url-pattern>
 	</servlet-mapping>
 	
+		
+	<servlet>
+		<display-name>selectRole</display-name>
+		<servlet-name>SelectRole</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.SelectRole</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectRole</servlet-name>
+		<url-pattern>/selectRole</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

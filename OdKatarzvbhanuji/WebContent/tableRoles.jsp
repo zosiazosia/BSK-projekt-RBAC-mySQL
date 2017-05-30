@@ -64,10 +64,12 @@
                         <tr>
                         	<th><c:out value="${el.id}"/></th>
                         	<th><c:out value="${el.type}"/></th>
+                        	
                         	<th><c:out value="${el.updateUser}"/></th>
                         	<th><c:out value="${el.deleteUser}"/></th>
                         	<th><c:out value="${el.readUser}"/></th>
                         	<th><c:out value="${el.createUser}"/></th>  
+                        	
                         	<th><c:out value="${el.updateClient}"/></th>
                         	<th><c:out value="${el.deleteClient}"/></th>
                         	<th><c:out value="${el.readClient}"/></th>

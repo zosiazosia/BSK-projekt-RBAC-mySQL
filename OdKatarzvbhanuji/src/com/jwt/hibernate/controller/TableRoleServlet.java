@@ -78,7 +78,7 @@ public class TableRoleServlet extends HttpServlet {
 				List<Role> roles = c.fetchAll();
 				
 				request.setAttribute("rolesList", roles);
-				request.getRequestDispatcher("tableRoles").forward(request, response);
+				request.getRequestDispatcher("selectRole").forward(request, response);
 				
 			}
 			else if(typ.equalsIgnoreCase("read")){
@@ -92,7 +92,7 @@ public class TableRoleServlet extends HttpServlet {
 				}
 				
 				request.setAttribute("rolesList", roles);
-				request.getRequestDispatcher("tableRoles").forward(request, response);
+				request.getRequestDispatcher("selectRole").forward(request, response);
 				
 				
 			}else if(typ.equalsIgnoreCase("update")){
