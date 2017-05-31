@@ -165,7 +165,7 @@
                         
                         %>
 	                        	<th>
-	                        	<form method="post" action="tableRoles" >
+	                        	<form method="post" action="roles" >
 	                        	<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
 	                        	<input type="hidden" name="typ" value="delete"/>                        		
 									<button class="okbutton" id="registerbutton">Usun</button>		
