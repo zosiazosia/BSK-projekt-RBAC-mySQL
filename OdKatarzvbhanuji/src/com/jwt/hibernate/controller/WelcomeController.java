@@ -36,22 +36,32 @@ public class WelcomeController extends HttpServlet {
 			//button to users table
 			writer.print("<form action='users' method='post'>"
 					+ "<input type='hidden' name='typ' value='read'/>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 				+	"<input type='submit' value='Tabela uzytkownikow' class='okbutton' /></form>" );
+		}
+		if(sessionRole.isReadRole()){
+			writer.print("<form action='roles' method='post'>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='read'/>"
+				+	"<input type='submit' value='Tabela rol' class='okbutton' /></form>" );
 		}
 		
 		if (sessionRole.isCreateRole()){
 			writer.print("<form action='addRole' method='post'>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+	"<input type='submit' value='Nowa rola' class='okbutton' /></form>");
 		}
 		
 		if(sessionRole.isCreateUser()){
 			writer.println("<form method='post' action='register.jsp'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<button class='okbutton'>Nowy uzytkownik</button>"
 					+ "</center></form>");
 		}
 		
 		if(sessionRole.isCreateClient()){
 			writer.println("<form method='post' action='newClient.jsp'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<button class='okbutton'>Nowy klient</button>"
 					+ "</center></form>");
 		}
@@ -62,17 +72,14 @@ public class WelcomeController extends HttpServlet {
 		}
 		if(sessionRole.isReadAppointment()){
 			writer.print("<form action='appointments' method='post'>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Tabela wizyt' class='okbutton' /></form>" );
-		}
-		if(sessionRole.isReadRole()){
-			writer.print("<form action='roles' method='post'>"
-					+ "<input type='hidden' name='typ' value='read'/>"
-				+	"<input type='submit' value='Tabela rol' class='okbutton' /></form>" );
 		}
 		
 		if(sessionRole.isReadTreatment()){
 			writer.print("<form action='treatments' method='post'>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Tabela zabiegow' class='okbutton' /></form>" );
 		}

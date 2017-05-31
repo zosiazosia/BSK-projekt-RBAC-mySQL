@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8"  
+    import="com.jwt.hibernate.bean.Role" 
+    import="com.jwt.hibernate.dao.RoleDAO" 
+    import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,106 +23,175 @@
     
 
         <div class="panel-body">
-            <c:if test="${empty rolesList}">
-                There are no roles
-            </c:if>
-            <c:if test="${not empty rolesList}">   
-            	            	
+        
+        <%
+        String roleNum = request.getParameter("rolesNumber");
+		int req = Integer.parseInt(roleNum);
+
+		String delete = request.getParameter("delete");
+    	String update = request.getParameter("update");
+    	String create = request.getParameter("create");
+		Set<Role> roles = new HashSet<Role>(0);
+		
+		String[] rolesTable = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
+		for (int i=0; i<req; i++){
+			String stringRole = request.getParameter(rolesTable[i]);
+			if (stringRole != null){
+				RoleDAO rDAO = new RoleDAO();
+				Role role = rDAO.getRole(stringRole);
+				roles.add(role);
+			}
+		}
+    	 %>            	            	
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>
                         <th>Id</th>
                         <th>Type</th>
-                        <th>Update User</th>
-                        <th>Delete User</th>
-                        <th>Read User</th>
-                        <th>Create User</th>  
-                        <th>Update Client</th>
-                        <th>Delete Client</th>
-                        <th>Read Client</th>
-                        <th>Create Client</th>
-                        <th>Update Role</th>
-                        <th>Delete Role</th>
-                        <th>Read Role</th>
-                        <th>Create Role</th>
-                        <th>Update Appointment</th>
-                        <th>Delete Appointment</th>
-                        <th>Read Appointment</th>
-                        <th>Create Appointment</th>
-                        <th>Update Treatment</th>
-                        <th>Delete Treatment</th>
-                        <th>Read Treatment</th>
-                        <th>Create Treatment</th>           
+                        <th>User</th>
+                        <th>Client</th>
+                        <th>Role</th>
+
+                        <th>Appointment</th>
+
+                        <th>Treatment</th>           
+                        <%
+                        if(delete.equals("1")){
                         
-                        <c:if test="${not empty delete}"> 
+                        %>
                         	<th>delete</th>
-                        </c:if>
-                        <c:if test="${not empty update}"> 
+                        <%
+                        }
+                        if(update.equals("1")){
+                        %>
+                        
                         	<th>update</th>
-                        </c:if>
+                       	<%} %>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${rolesList}" var="el">
+                  <c:forEach items="<%=roles %>" var="el">
                         <tr>
                         	<th><c:out value="${el.id}"/></th>
                         	<th><c:out value="${el.type}"/></th>
+
+                        	<th>
+                        	<c:set var="U" value="${el.updateUser eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readUser eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteUser eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createUser eq true ? 'C': '-'}"/>
                         	
-                        	<th><c:out value="${el.updateUser}"/></th>
-                        	<th><c:out value="${el.deleteUser}"/></th>
-                        	<th><c:out value="${el.readUser}"/></th>
-                        	<th><c:out value="${el.createUser}"/></th>  
+                        	<%
                         	
-                        	<th><c:out value="${el.updateClient}"/></th>
-                        	<th><c:out value="${el.deleteClient}"/></th>
-                        	<th><c:out value="${el.readClient}"/></th>
-                        	<th><c:out value="${el.createClient}"/></th>   
-                        	   
-                        	<th><c:out value="${el.updateRole}"/></th>
-                        	<th><c:out value="${el.deleteRole}"/></th>
-                        	<th><c:out value="${el.readRole}"/></th>
-                        	<th><c:out value="${el.createRole}"/></th>   
                         	
-                        	<th><c:out value="${el.updateAppointment}"/></th>
-                        	<th><c:out value="${el.deleteAppointment}"/></th>
-                        	<th><c:out value="${el.readAppointment}"/></th>
-                        	<th><c:out value="${el.createAppointment}"/></th>  
+						    String resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
                         	
-                        	<th><c:out value="${el.updateTreatment}"/></th>
-                        	<th><c:out value="${el.deleteTreatment}"/></th>
-                        	<th><c:out value="${el.readTreatment}"/></th>
-                        	<th><c:out value="${el.createTreatment}"/></th>  
-                        	                 	
-                        	<c:if test="${not empty delete}"> 
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	<th>
+                        	<c:set var="U" value="${el.updateClient eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readClient eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteClient eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createClient eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	<th>
+                        	<c:set var="U" value="${el.updateRole eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readRole eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteRole eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createRole eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	<th>
+                        	<c:set var="U" value="${el.updateAppointment eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readAppointment eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteAppointment eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createAppointment eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	                        	                        	<th>
+                        	<c:set var="U" value="${el.updateTreatment eq true ? 'U': '-'}"/>
+                        	<c:set var="R" value="${el.readTreatment eq true ? 'R': '-'}"/>
+                        	<c:set var="D" value="${el.deleteTreatment eq true ? 'D': '-'}"/>
+                        	<c:set var="C" value="${el.createTreatment eq true ? 'C': '-'}"/>
+                        	
+                        	<%
+						    resp = "";
+                        	resp = resp + (String)pageContext.getAttribute("C")
+                        				+ (String)pageContext.getAttribute("R")
+                        				+ (String)pageContext.getAttribute("U")
+                        				+ (String)pageContext.getAttribute("D");
+                        	
+						    out.println(resp);
+  							%>  
+                        	</th>
+                        	                 	<%
+                        
+                	   if(delete.equals("1")){
+                        
+                        %>
 	                        	<th>
-	                        	<form method="post" action="roles" />
+	                        	<form method="post" action="tableRoles" >
 	                        	<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
 	                        	<input type="hidden" name="typ" value="delete"/>                        		
 									<button class="okbutton" id="registerbutton">delete</button>		
 								</form>                        	
 	                        	</th>
-                        	</c:if>
-                        	<c:if test="${not empty update}"> 
+ 						<%
+                        }
+                  	    if(update.equals("1")){
+                        %>
+                        
 	                        	<th>                        	
-	                        	<form method="post" action="roles"/>
+	                        	<form method="post" action="tableRoles">
 	                        		<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
 	                        		<input type="hidden" name="typ" value="update"/>             		
 									<button class="okbutton" id="registerbutton">update</button>		
 								</form>
 								</th>
-							</c:if>
+								<%} %>
                         </tr>
-                    </c:forEach>
+                       </c:forEach>
                     </tbody>
                 </table>
-            </c:if>
-            
-            <c:if test="${not empty create}">
-	            <form method="post" action="roles">
+            <%if (create.equals("1")){ %>
+	            <form method="post" action="tableRoles">
 	                <input type="hidden" name="typ" value="add"/>
 	                <input type='submit' value='add new' class='okbutton' />             				
 				</form>
-			</c:if>
+			<%} %>
 			
 			<form method='get' action='welcome'>
 				<input type='submit' value='Powrot' class='okbutton' />

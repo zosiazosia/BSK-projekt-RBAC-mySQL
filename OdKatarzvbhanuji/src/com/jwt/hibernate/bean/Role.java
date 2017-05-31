@@ -16,16 +16,18 @@ public class Role implements java.io.Serializable {
 	private boolean readRole;
 	private boolean updateRole;
 	private boolean deleteRole;
+
 	
 	private boolean createUser;
 	private boolean readUser;
 	private boolean updateUser;
 	private boolean deleteUser;
-	
+
 	private boolean createClient;
 	private boolean readClient;
 	private boolean updateClient;
 	private boolean deleteClient;
+
 
 	private boolean createAppointment;
 	private boolean readAppointment;
@@ -36,6 +38,7 @@ public class Role implements java.io.Serializable {
 	private boolean readTreatment;
 	private boolean updateTreatment;
 	private boolean deleteTreatment;
+
 	
 	public Role() {
 	}
@@ -65,11 +68,12 @@ public class Role implements java.io.Serializable {
 		this.readTreatment = false;
 		this.updateTreatment = false;
 		this.deleteTreatment = false;
+
 	}
 	
 	
 
-	public Long getId() {
+ 	public Long getId() {
 		return this.id;
 	}
 

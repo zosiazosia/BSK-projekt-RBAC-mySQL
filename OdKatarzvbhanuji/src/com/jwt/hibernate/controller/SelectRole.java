@@ -22,6 +22,14 @@ public class SelectRole extends HttpServlet{
 			
 			List<Role> roles = (List<Role>)request.getAttribute("rolesList");
 
+			User userr = new User();
+			userr = (User) request.getAttribute("currentSessionUser");
+			RoleDAO rDAO = new RoleDAO();
+			Role currentUserRole = rDAO.getRole(userr.getActiveRoleString());
+			String read = (String) request.getAttribute("typ");
+			
+			
+			
 			PrintWriter writer;
 			try {
 				writer = response.getWriter();
@@ -37,11 +45,19 @@ public class SelectRole extends HttpServlet{
 					
 					String type = role.getType();
 					
-					writer.print("<input type='checkbox' name=" + rolesTable[i++] + " value=" + type + " />" + type + "</br>");
+					writer.print("<tr><th><input type='checkbox' name=" + rolesTable[i++] + " value=" + type + " />" + type + "</th></tr></br>");
 					
 				}
-									
-				writer.print("<input type='hidden' name='rolesNumber' value="+i+" />");				
+				Integer delete = (Integer) request.getAttribute("delete");
+				Integer create = (Integer) request.getAttribute("create");
+				Integer update = (Integer) request.getAttribute("update");
+				writer.print("<tr><th><input type='hidden' name='delete' value='"+delete+"' /></th></tr>");
+				writer.print("<tr><th><input type='hidden' name='create' value="+create+" /></th></tr>");
+				writer.print("<tr><th><input type='hidden' name='update' value='"+update+"' /></th></tr>");
+				
+				writer.print("<tr><th><input type='hidden' name='rolesNumber' value=" + i + " /></th></tr>");
+				writer.print("<tr><th><input type='hidden' name='currentSessionUser' value=" + userr + " /></th></tr>");
+				writer.print("<tr><th><input type='hidden' name='typ' value='" + read + "' /></th></tr>");
 				
 				writer.print("</tbody></table><p />"
 						+ "<input type='submit' value='Pokaz' class='okbutton' /></center></form></body></html>");
