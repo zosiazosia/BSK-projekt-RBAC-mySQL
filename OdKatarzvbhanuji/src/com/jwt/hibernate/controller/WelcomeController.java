@@ -97,7 +97,7 @@ public class WelcomeController extends HttpServlet {
 				+	"<input type='submit' value='Tabela zabiegow' class='okbutton' /></form></td>" );
 		}
 		if(sessionRole.isCreateTreatment()){
-			writer.print("<td><form action='treatments' method='post'>"
+			writer.print("<td><form action='addTreatment' method='post'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Nowy zabieg' class='okbutton' /></form></td>" );

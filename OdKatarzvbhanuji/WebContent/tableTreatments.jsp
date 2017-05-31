@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Client's list</title>
+    <title>Zabiegi</title>
     <!-- Bootstrap CSS -->
     <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -58,7 +58,7 @@
                         	</c:if>
                         	<c:if test="${not empty update}"> 
 	                        	<th>                        	
-	                        	<form method="post" action="treatments"/>
+	                        	<form method="post" action="updateTreatment"/>
 	                        		<input type="hidden" name="id" value="<c:out value='${el.name}'/>"/>
 	                        		<input type="hidden" name="typ" value="update"/>             		
 									<button class="okbutton" id="registerbutton">Edytuj</button>		
@@ -72,7 +72,7 @@
             </c:if>
             
             <c:if test="${not empty create}">
-	            <form method="post" action="treatments">
+	            <form method="post" action="addTreatment">
 	                <input type="hidden" name="typ" value="add"/>
 	                <input type='submit' value='Nowy zabieg' class='okbutton' />             				
 				</form>

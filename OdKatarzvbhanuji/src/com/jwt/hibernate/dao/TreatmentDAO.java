@@ -38,6 +38,41 @@ public class TreatmentDAO {
 		
 	}
 
+	public Treatment get (String name){
+		List<Treatment> treatments = new ArrayList<Treatment>();
+        Transaction trns = null;
+        
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			trns = session.beginTransaction();            
+			String hql = "FROM Treatment WHERE name='" + name + "'";
+			treatments = session.createQuery(hql).list();
+			
+		}
+		catch (Exception e){
+        e.printStackTrace();
+        System.out.println("error creating treatments list");
+	    } finally {
+	        session.flush();
+	        session.close();
+	    }
+		return treatments.get(0);
+	}
+	
+	public boolean Update(Treatment t){
+		Session session = HibernateUtil.getSessionFactory().openSession();			
+		Transaction trn = session.beginTransaction();
+		
+		try{
+			session.update(t);
+			trn.commit();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 	public static void delete(String name){
 		

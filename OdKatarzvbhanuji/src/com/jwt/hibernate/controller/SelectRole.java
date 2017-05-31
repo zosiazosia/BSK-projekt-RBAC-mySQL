@@ -34,7 +34,7 @@ public class SelectRole extends HttpServlet{
 			try {
 				writer = response.getWriter();
 				
-				writer.println("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Edycja uzytkownika</title> "
+				writer.println("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Wybierz role</title> "
 						+ "<link href='css/login.css' rel='stylesheet' type='text/css' /></head><body><form action='tableRoles' method='post'>"
 						+ "	<center><table border='0.5'  cellpadding='3'><thead>"
 						+ " <tr><th class='header'>Wybierz role do wyswietlenia</th></tr></thead><tbody>");

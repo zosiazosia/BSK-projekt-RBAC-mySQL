@@ -34,6 +34,36 @@
 		<url-pattern>/roleAdded</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<display-name>NewTreatment</display-name>
+		<servlet-name>NewTreatment</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.NewTreatment</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewTreatment</servlet-name>
+		<url-pattern>/treatmentAdded</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>UpdateTreatment</display-name>
+		<servlet-name>UpdateTreatment</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.UpdateTreatment</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateTreatment</servlet-name>
+		<url-pattern>/updateTreatment</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<display-name>TreatmentUpdated</display-name>
+		<servlet-name>TreatmentUpdated</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.TreatmentUpdated</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TreatmentUpdated</servlet-name>
+		<url-pattern>/treatmentUpdated</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<display-name>NewClient</display-name>
 		<servlet-name>NewClient</servlet-name>
@@ -52,6 +82,16 @@
 	<servlet-mapping>
 		<servlet-name>AddClient</servlet-name>
 		<url-pattern>/addClient</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>AddTreatment</display-name>
+		<servlet-name>AddTreatment</servlet-name>
+		<jsp-file>/newTreatment.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTreatment</servlet-name>
+		<url-pattern>/addTreatment</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
