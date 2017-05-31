@@ -19,9 +19,7 @@ public class ClientDAO extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	public void addClients(){
-		try{
-		//	Session session = HibernateUtil.getSessionFactory().openSession();			           		
-		//	Transaction trns = session.beginTransaction();          
+		try{      
 			Client client = new Client("Ola", "Klientka", "95485147521");
 			client.setBirthYear(1945);
 			
@@ -37,8 +35,6 @@ public class ClientDAO extends HttpServlet{
 			
 			client.setAppointments(appSet);
 			add(client);
-			//session.save(client);
-			//trns.commit();
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -71,6 +67,27 @@ public class ClientDAO extends HttpServlet{
 			
 		}
 	}
+	
+	public boolean update(Client client){
+		try{
+			Session session = HibernateUtil.getSessionFactory().openSession();			           		
+			Transaction trns = session.beginTransaction();  
+			
+			trns = session.beginTransaction();        
+
+			session.update(client);
+			trns.commit();
+			return true;
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage() + "\n error w RoleController");
+			return false;
+			
+		}
+	}
+	
+	
 	public List<Client> fetchAll(){
 		
 		List<Client> clients = new ArrayList<Client>();
@@ -113,6 +130,28 @@ public class ClientDAO extends HttpServlet{
 	    }
 		return clients.get(0);
 	}
+	
+	public Client get(Long id){
+		List<Client> clients = new ArrayList<Client>();
+	    Transaction trns = null;
+	    
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			trns = session.beginTransaction();            
+			String hql = "FROM Client WHERE id = '" + id + "'";
+			clients = session.createQuery(hql).list();
+			
+		}
+		catch (Exception e){
+	    e.printStackTrace();
+	    System.out.println("error creating clients list");
+	    } finally {
+	        session.flush();
+	        session.close();
+	    }
+		return clients.get(0);
+	}
+	
 	public void delete(long id){
 		Session session = HibernateUtil.getSessionFactory().openSession();	
 		

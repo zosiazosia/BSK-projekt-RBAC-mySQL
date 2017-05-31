@@ -64,7 +64,7 @@
                         	</c:if>
                         	<c:if test="${not empty update}"> 
 	                        	<th>                        	
-	                        	<form method="post" action="clients"/>
+	                        	<form method="post" action="updateClient"/>
 	                        		<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
 	                        		<input type="hidden" name="typ" value="update"/>             		
 									<button class="okbutton" id="registerbutton">Edytuj</button>		

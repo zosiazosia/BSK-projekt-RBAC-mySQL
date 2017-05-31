@@ -133,6 +133,16 @@
 		<servlet-name>UpdateUser</servlet-name>
 		<url-pattern>/updateUser</url-pattern>
 	</servlet-mapping>
+			
+	<servlet>
+		<display-name>UpdateClient</display-name>
+		<servlet-name>UpdateClient</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.UpdateClient</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateClient</servlet-name>
+		<url-pattern>/updateClient</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<display-name>UpdateRole</display-name>
@@ -151,6 +161,16 @@
 	<servlet-mapping>
 		<servlet-name>RoleUpdated</servlet-name>
 		<url-pattern>/roleUpdated</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>ClientUpdated</display-name>
+		<servlet-name>ClientUpdated</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.ClientUpdated</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClientUpdated</servlet-name>
+		<url-pattern>/clientUpdated</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
