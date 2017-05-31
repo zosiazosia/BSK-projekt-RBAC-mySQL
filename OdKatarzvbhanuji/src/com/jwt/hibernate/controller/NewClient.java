@@ -12,16 +12,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.jwt.hibernate.bean.Client;
+import com.jwt.hibernate.dao.ClientDAO;
 import com.jwt.hibernate.dao.HibernateUtil;
 
 public class NewClient extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		Session session = HibernateUtil.getSessionFactory().openSession();	
-		Transaction trns = session.beginTransaction();   
 		PrintWriter writer = response.getWriter();
 		Client client = new Client();
+		ClientDAO cDAO = new ClientDAO();
 		
 		client.setName(request.getParameter("name"));
 		client.setSurname(request.getParameter("surname"));
@@ -30,11 +30,16 @@ public class NewClient extends HttpServlet {
 		client.setPhone(request.getParameter("phone"));
 		client.setAppointments(null);
 		
-		session.save(client);
-		trns.commit();
+		boolean result = cDAO.add(client);
 
-		writer.println("<html> <link href='css/login.css' rel='stylesheet' type='text/css' />" 
+		if (result) {
+			writer.println("<html> <link href='css/login.css' rel='stylesheet' type='text/css' />" 
 			+ "<body> <center> </br> Klient dodany pomyslnie");
+		}
+		else{
+			writer.println("<html> <link href='css/login.css' rel='stylesheet' type='text/css' />" 
+					+ "<body> <center> </br> Dodanie klienta nie powiodlo sie");
+		}
 
 		writer.println( "<form method='get' action='welcome'> "
 				+ "<input type='submit' value='Powrot' class='okbutton' />" 

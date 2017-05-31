@@ -39,8 +39,7 @@
 						<%
 						RoleDAO rd = new RoleDAO();
 						rd.insertRoles();
-						UserDAO ud = new UserDAO();
-						
+						UserDAO ud = new UserDAO();						
 						ud.addAdmin();	
 						ud.addUsers();
 						ClientDAO cd = new ClientDAO();

@@ -22,7 +22,7 @@ public class AppointmentDAO extends HttpServlet{
 			Transaction trns = session.beginTransaction();
 			Appointment app = new Appointment();
 			
-			Client client = new Client("Zofia", "Klientka");
+			Client client = new Client("Amelia", "Mloda", "54869325175");
 						
 			session.save(client);			
 			trns.commit();

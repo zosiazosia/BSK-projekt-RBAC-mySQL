@@ -29,7 +29,7 @@ public class WelcomeController extends HttpServlet {
 		String registerResult = (String) session.getAttribute("registerResult");
 
 		writer.println("<html> <link href='css/login.css' rel='stylesheet' type='text/css' />"
-				+ "<head><center>Witaj " + user.getLogin() + " </center>"
+				+ "<head><center>Witaj " + user.getLogin() + " </br></center>"
 						+ "<title>Strona glowna</title></head>" 
 						+ "<body> <center><table><tr><center>");
 		

@@ -310,7 +310,7 @@ public class UserDAO {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction trns = session.beginTransaction(); 
 			Encryptor encryptor = new Encryptor();
-			User user = new User("admin", encryptor.encrypt("a"));
+			User user = new User("admin", encryptor.encrypt("a"), "Monika", "Aka", "54896321574");
 			Set<Role> roles = new HashSet<Role>();
 			RoleDAO roleDao = new RoleDAO();
 			roles.add(roleDao.getRole("Admin"));
@@ -331,7 +331,7 @@ public class UserDAO {
 			Transaction trns = session.beginTransaction(); 
 			Encryptor encryptor = new Encryptor();
 			
-			User user = new User("u", encryptor.encrypt("u"));
+			User user = new User("u", encryptor.encrypt("u"), "Maciek", "Mily", "12365478965");
 			Set<Role> roles = new HashSet<Role>();
 			RoleDAO roleDao = new RoleDAO();
 			roles.add(roleDao.getRole("Recepcjonista"));
@@ -342,7 +342,7 @@ public class UserDAO {
 			
 			Session session1 = HibernateUtil.getSessionFactory().openSession();
 			Transaction trns1 = session1.beginTransaction();
-			User user1 = new User("n", encryptor.encrypt("n"));
+			User user1 = new User("n", encryptor.encrypt("n"), "Klementyna", "Mala", "12354896325");
 			Set<Role> roles1 = new HashSet<Role>();
 			roles1.add(roleDao.getRole("Dentysta"));
 			roles1.add(roleDao.getRole("Asystent"));

@@ -20,11 +20,10 @@ public class ClientDAO extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	public void addClients(){
 		try{
-			Session session = HibernateUtil.getSessionFactory().openSession();			           		
-			Transaction trns = session.beginTransaction();          
-			Client client = new Client("Ola", "Klientka");
-			client.setBirthYear(45);
-			client.setPesel("95485147521");
+		//	Session session = HibernateUtil.getSessionFactory().openSession();			           		
+		//	Transaction trns = session.beginTransaction();          
+			Client client = new Client("Ola", "Klientka", "95485147521");
+			client.setBirthYear(1945);
 			
 			Set<Appointment> appSet = new HashSet<Appointment>(0);
 			Set<Treatment> treatSet = new HashSet<Treatment>(0);
@@ -37,8 +36,9 @@ public class ClientDAO extends HttpServlet{
 			appSet.add(new Appointment((float)378, treatSet2));
 			
 			client.setAppointments(appSet);
-			session.save(client);
-			trns.commit();
+			add(client);
+			//session.save(client);
+			//trns.commit();
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();
