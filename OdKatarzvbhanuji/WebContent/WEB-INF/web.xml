@@ -75,6 +75,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<display-name>NewAppointment</display-name>
+		<servlet-name>NewAppointment</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.NewAppointment</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewAppointment</servlet-name>
+		<url-pattern>/appointmentAdded</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<display-name>AddClient</display-name>
 		<servlet-name>AddClient</servlet-name>
 		<jsp-file>/newClient.jsp</jsp-file>
@@ -92,6 +102,16 @@
 	<servlet-mapping>
 		<servlet-name>AddTreatment</servlet-name>
 		<url-pattern>/addTreatment</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>AddAppointment</display-name>
+		<servlet-name>AddAppointment</servlet-name>
+		<jsp-file>/newAppointment.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddAppointment</servlet-name>
+		<url-pattern>/addAppointment</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

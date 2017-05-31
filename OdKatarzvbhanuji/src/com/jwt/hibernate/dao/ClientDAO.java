@@ -22,7 +22,7 @@ public class ClientDAO extends HttpServlet{
 		try{
 			Session session = HibernateUtil.getSessionFactory().openSession();			           		
 			Transaction trns = session.beginTransaction();          
-			Client client = new Client("Zofia", "Klientka");
+			Client client = new Client("Ola", "Klientka");
 			client.setBirthYear(45);
 			client.setPesel("95485147521");
 			
@@ -49,11 +49,20 @@ public class ClientDAO extends HttpServlet{
 		try{
 			Session session = HibernateUtil.getSessionFactory().openSession();			           		
 			Transaction trns = session.beginTransaction();  
-						
-			session.save(client);			
-			trns.commit();
+			List<Client> clients = new ArrayList<Client>();
 			
-			return true;
+			trns = session.beginTransaction();            
+			String hql = "FROM Client WHERE pesel = '" + client.getPesel() + "'";
+			clients = session.createQuery(hql).list();
+			
+			if(clients.isEmpty()){
+			
+				session.save(client);			
+				trns.commit();
+				
+				return true;
+			}
+			else return false;
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -82,6 +91,27 @@ public class ClientDAO extends HttpServlet{
 	        session.close();
 	    }
 		return clients;
+	}
+	
+	public Client get(String pesel){
+		List<Client> clients = new ArrayList<Client>();
+	    Transaction trns = null;
+	    
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			trns = session.beginTransaction();            
+			String hql = "FROM Client WHERE pesel = '" + pesel + "'";
+			clients = session.createQuery(hql).list();
+			
+		}
+		catch (Exception e){
+	    e.printStackTrace();
+	    System.out.println("error creating clients list");
+	    } finally {
+	        session.flush();
+	        session.close();
+	    }
+		return clients.get(0);
 	}
 	public void delete(long id){
 		Session session = HibernateUtil.getSessionFactory().openSession();	

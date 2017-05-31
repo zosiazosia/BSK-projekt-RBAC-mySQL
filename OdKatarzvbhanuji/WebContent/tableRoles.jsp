@@ -28,11 +28,14 @@
         
         <%
         String roleNum = request.getParameter("rolesNumber");
-		int req = Integer.parseInt(roleNum);
-
+        int req = 0;
+        if (roleNum != null){
+			req = Integer.parseInt(roleNum);
+        }
 		String delete = request.getParameter("delete");
     	String update = request.getParameter("update");
     	String create = request.getParameter("create");
+    	String read = request.getParameter("read");
 		Set<Role> roles = new HashSet<Role>(0);
 		
 		String[] rolesTable = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
@@ -165,10 +168,10 @@
                         
                         %>
 	                        	<th>
-	                        	<form method="post" action="tableRoles" >
+	                        	<form method="post" action="roles" >
 	                        	<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
-	                        	<input type="hidden" name="typ" value="delete"/>                        		
-									<button class="okbutton" id="registerbutton">Usun</button>		
+	                        	<input type="hidden" name="typ" value="delete"/>                              		
+								<button class="okbutton" id="registerbutton">Usun</button>		
 								</form>                        	
 	                        	</th>
  						<%
@@ -178,8 +181,12 @@
                         
 	                        	<th>                        	
 	                        	<form method="post" action="updateRole">
-	                        		<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
-	                        		<input type="hidden" name="typ" value="update"/>             		
+	                        	<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>     
+	                        	<input type="hidden" name="delete" value="<%=delete%>"/>               
+	                        	<input type="hidden" name="update" value="<%=update%>"/>             
+	                        	<input type="hidden" name="create" value="<%=create%>"/>               
+	                        	<input type="hidden" name="read" value="<%=read%>"/>       
+	                			<input type="hidden" name="typ" value="update"/>   
 									<button class="okbutton" id="registerbutton">Edytuj</button>		
 								</form>
 								</th>
@@ -191,7 +198,11 @@
                 
             <%if (create.equals("1")){ %>
 	            <form method="post" action="addRole">
-	                <input type="hidden" name="typ" value="add"/>
+	                <input type="hidden" name="typ" value="create"/>          
+                     	<input type="hidden" name="delete" value="<%=delete%>"/>               
+                     	<input type="hidden" name="update" value="<%=update%>"/>             
+                     	<input type="hidden" name="create" value="<%=create%>"/>               
+                     	<input type="hidden" name="read" value="<%=read%>"/>        
 	                <input type='submit' value='Nowa rola' class='okbutton' />             				
 				</form>
 			<%} %>

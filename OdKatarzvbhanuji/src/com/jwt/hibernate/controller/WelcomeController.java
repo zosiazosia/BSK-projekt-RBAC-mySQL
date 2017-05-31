@@ -83,7 +83,7 @@ public class WelcomeController extends HttpServlet {
 				+	"<input type='submit' value='Tabela wizyt' class='okbutton' /></form></td>" );
 		}
 		if(sessionRole.isCreateAppointment()){
-			writer.print("<td><form action='appointments' method='post'>"
+			writer.print("<td><form action='addAppointment' method='post'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Nowa wizyta' class='okbutton' /></form></td>" );

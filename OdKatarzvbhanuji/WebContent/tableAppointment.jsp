@@ -70,7 +70,7 @@
             </c:if>
             
             <c:if test="${not empty create}">
-	            <form method="post" action="appointments">
+	            <form method="post" action="addAppointment">
 	                <input type="hidden" name="typ" value="add"/>
 	                <input type='submit' value='Nowa wizyta' class='okbutton' />             				
 				</form>
