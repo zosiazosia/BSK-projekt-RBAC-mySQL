@@ -2,7 +2,9 @@ package com.jwt.hibernate.dao;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ import org.hibernate.Transaction;
 
 import com.jwt.hibernate.bean.Role;
 import com.jwt.hibernate.bean.User;
+import com.jwt.hibernate.controller.Encryptor;
 
 public class RoleDAO extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -51,6 +54,40 @@ public class RoleDAO extends HttpServlet {
 	    }
 		return rolesList.get(0);
 	}
+	public Role getRole(Long id){
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		Transaction trns = null;	
+		List<Role> rolesList = new ArrayList<Role>();
+		try{
+			trns = s.beginTransaction();            
+			String hql = "FROM Role WHERE id = '" + id + "'";
+			rolesList = s.createQuery(hql).list();			
+		}
+		catch (Exception e){
+	        e.printStackTrace();
+	        System.out.println("error creating users list");
+	    } finally {
+	        s.flush();
+	        s.close();
+	    }
+		return rolesList.get(0);
+	}
+	
+	public boolean Update(Role role){
+		Session session = HibernateUtil.getSessionFactory().openSession();		
+		Transaction trans = session.beginTransaction();
+		try{
+			session.update(role);
+			trans.commit();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	
 	public List<Role> fetchAll(){
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		Transaction trns = null;	

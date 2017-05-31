@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="css/login.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         .myrow-container {
             margin: 20px;
@@ -16,26 +17,27 @@
     </style>
 </head>
 <body class=".container-fluid">
+<center>
 <div class="container myrow-container">
     
 
         <div class="panel-body">
             <c:if test="${empty treatmentsList}">
-                There are no treatments
+                Nie ma zadnych zabiegow
             </c:if>
             <c:if test="${not empty treatmentsList}">   
             	            	
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Duration</th>                        
+                        <th>Nazwa</th>
+                        <th>Cena</th>
+                        <th>Czas trwania</th>                        
                         <c:if test="${not empty delete}"> 
-                        	<th>delete</th>
+                        	<th>Usuwanie</th>
                         </c:if>
                         <c:if test="${not empty update}"> 
-                        	<th>update</th>
+                        	<th>Edycja</th>
                         </c:if>
                     </tr>
                     </thead>
@@ -50,7 +52,7 @@
 	                        	<form method="post" action="treatments" />
 	                        	<input type="hidden" name="id" value="<c:out value='${el.name}'/>"/>
 	                        	<input type="hidden" name="typ" value="delete"/>                        		
-									<button class="okbutton" id="registerbutton">delete</button>		
+									<button class="okbutton" id="registerbutton">Usun</button>		
 								</form>                        	
 	                        	</th>
                         	</c:if>
@@ -59,7 +61,7 @@
 	                        	<form method="post" action="treatments"/>
 	                        		<input type="hidden" name="id" value="<c:out value='${el.name}'/>"/>
 	                        		<input type="hidden" name="typ" value="update"/>             		
-									<button class="okbutton" id="registerbutton">update</button>		
+									<button class="okbutton" id="registerbutton">Edytuj</button>		
 								</form>
 								</th>
 							</c:if>
@@ -72,7 +74,7 @@
             <c:if test="${not empty create}">
 	            <form method="post" action="treatments">
 	                <input type="hidden" name="typ" value="add"/>
-	                <input type='submit' value='add new' class='okbutton' />             				
+	                <input type='submit' value='Nowy zabieg' class='okbutton' />             				
 				</form>
 			</c:if>
 			
@@ -90,5 +92,6 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
      --%>
 </div>
+</center>
 </body>
 </html>

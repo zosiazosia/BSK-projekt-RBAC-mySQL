@@ -75,6 +75,25 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<display-name>UpdateRole</display-name>
+		<servlet-name>UpdateRole</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.UpdateRole</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateRole</servlet-name>
+		<url-pattern>/updateRole</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>RoleUpdated</display-name>
+		<servlet-name>RoleUpdated</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.RoleUpdated</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RoleUpdated</servlet-name>
+		<url-pattern>/roleUpdated</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<display-name>UserUpdated</display-name>
 		<servlet-name>UserUpdated</servlet-name>
 		<servlet-class>com.jwt.hibernate.controller.UserUpdated</servlet-class>

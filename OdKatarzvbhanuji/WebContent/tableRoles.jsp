@@ -12,6 +12,7 @@
     <!-- Bootstrap CSS -->
     <%-- <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> --%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="css/login.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         .myrow-container {
             margin: 20px;
@@ -19,6 +20,7 @@
     </style>
 </head>
 <body class=".container-fluid">
+<center>
 <div class="container myrow-container">
     
 
@@ -47,25 +49,25 @@
                     <thead style="background-color: #bce8f1;">
                     <tr>
                         <th>Id</th>
-                        <th>Type</th>
-                        <th>User</th>
-                        <th>Client</th>
+                        <th>Typ</th>
+                        <th>Uzytkownicy</th>
+                        <th>Klienci</th>
                         <th>Role</th>
 
-                        <th>Appointment</th>
+                        <th>Wizyty</th>
 
-                        <th>Treatment</th>           
+                        <th>Zabiegi</th>           
                         <%
                         if(delete.equals("1")){
                         
                         %>
-                        	<th>delete</th>
+                        	<th>Usuwanie</th>
                         <%
                         }
                         if(update.equals("1")){
                         %>
                         
-                        	<th>update</th>
+                        	<th>Edycja</th>
                        	<%} %>
                     </tr>
                     </thead>
@@ -166,7 +168,7 @@
 	                        	<form method="post" action="tableRoles" >
 	                        	<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
 	                        	<input type="hidden" name="typ" value="delete"/>                        		
-									<button class="okbutton" id="registerbutton">delete</button>		
+									<button class="okbutton" id="registerbutton">Usun</button>		
 								</form>                        	
 	                        	</th>
  						<%
@@ -175,10 +177,10 @@
                         %>
                         
 	                        	<th>                        	
-	                        	<form method="post" action="tableRoles">
+	                        	<form method="post" action="updateRole">
 	                        		<input type="hidden" name="id" value="<c:out value='${el.id}'/>"/>
 	                        		<input type="hidden" name="typ" value="update"/>             		
-									<button class="okbutton" id="registerbutton">update</button>		
+									<button class="okbutton" id="registerbutton">Edytuj</button>		
 								</form>
 								</th>
 								<%} %>
@@ -186,13 +188,14 @@
                        </c:forEach>
                     </tbody>
                 </table>
+                
             <%if (create.equals("1")){ %>
-	            <form method="post" action="tableRoles">
+	            <form method="post" action="addRole">
 	                <input type="hidden" name="typ" value="add"/>
-	                <input type='submit' value='add new' class='okbutton' />             				
+	                <input type='submit' value='Nowa rola' class='okbutton' />             				
 				</form>
 			<%} %>
-			
+			</br>
 			<form method='get' action='welcome'>
 				<input type='submit' value='Powrot' class='okbutton' />
 			</form>
@@ -207,5 +210,6 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
      --%>
 </div>
+</center>
 </body>
 </html>
