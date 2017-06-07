@@ -25,8 +25,16 @@
             <c:if test="${empty usersList}">
                 There are no users
             </c:if>
-            <c:if test="${not empty usersList}">   
-            	            	
+            <c:if test="${not empty usersList}">  
+   	 	<form method="post" action="users">  
+         <input type="text" name="search" placeholder="wyszukaj" class="inputbox" onchange="this.form.submit()"/>
+    	 <input type="hidden" name="usersList" value="${usersList}" />
+    	 <input type="hidden" name="delete" value="${delete}" />
+    	 <input type="hidden" name="update" value="${update}" />
+    	 <input type="hidden" name="create" value="${create}" />
+    	 <input type="hidden" name="typ" value="read" />
+    <!-- 	 <input type="submit" value="Szukaj" class="okbutton"/> -->
+    	 </form>  
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>

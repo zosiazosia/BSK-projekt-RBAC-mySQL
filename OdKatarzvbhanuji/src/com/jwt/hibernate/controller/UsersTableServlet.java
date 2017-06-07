@@ -3,6 +3,7 @@ package com.jwt.hibernate.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -32,10 +33,14 @@ public class UsersTableServlet extends HttpServlet {
 			String sessionRoleString = userr.getActiveRoleString();
 			RoleDAO rc = new RoleDAO();
 			Role sessionRole = rc.getRole(sessionRoleString);
+			String search2 = (String) session.getAttribute("search");
+			String search = request.getParameter("search");
+			
 			
 			
 			if (sessionRole.isCreateUser()){
 				request.setAttribute("create", 1);
+				request.setAttribute("typ", "create");
 			}else{
 				request.setAttribute("create", null);
 			}
@@ -43,6 +48,7 @@ public class UsersTableServlet extends HttpServlet {
 			
 			if (sessionRole.isDeleteUser()){
 				request.setAttribute("delete", 1);
+				request.setAttribute("typ", "delete");
 			}
 			else{
 				request.setAttribute("delete", null);
@@ -51,6 +57,7 @@ public class UsersTableServlet extends HttpServlet {
 			
 			if (sessionRole.isReadUser()){
 				request.setAttribute("read", 1);
+				request.setAttribute("typ", "read");
 			}
 			else{
 				request.setAttribute("read", null);
@@ -59,6 +66,7 @@ public class UsersTableServlet extends HttpServlet {
 			
 			if (sessionRole.isUpdateUser()){
 				request.setAttribute("update", 1);
+				request.setAttribute("typ", "update");
 			}
 			else{
 				request.setAttribute("update", null);
@@ -77,6 +85,14 @@ public class UsersTableServlet extends HttpServlet {
 				u.delete(id);
 				List<User> users = u.fetchAll();
 				
+			/*	if (search != null && search != ""){
+					for (User user : users){
+						if(!user.getName().contains(search)){
+							users.remove(user);
+						}
+					}
+				}*/
+				
 				request.setAttribute("usersList", users);
 				request.getRequestDispatcher("tabelki").forward(request, response);
 				
@@ -91,13 +107,26 @@ public class UsersTableServlet extends HttpServlet {
 					System.out.println(user.getName());
 				}
 				
+				if (search != null && search != ""){
+					Iterator<User> iterator = users.iterator();
+					while(iterator.hasNext()){
+						User user = iterator.next();
+						if(!user.getName().contains(search)){
+							iterator.remove();
+						}
+					}
+				}
+				System.out.println(search);
+				for(User user : users){
+					System.out.println(user.getName());
+				}
 				request.setAttribute("usersList", users);
 				request.getRequestDispatcher("tabelki").forward(request, response);
 				
 				
 			}else{ 
 				
-				request.getRequestDispatcher("regi").forward(request, response);
+				request.getRequestDispatcher("welcome").forward(request, response);
 				
 				
 			}

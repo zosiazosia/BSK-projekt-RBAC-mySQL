@@ -63,13 +63,12 @@
 			}
 		}
 		%>
-    	 <input type="text" name="search" placeholder="wyszukaj" class="inputbox"/>
+    	 <input type="text" name="search" placeholder="wyszukaj" class="inputbox" onchange="this.form.submit()"/>
     	 <input type="hidden" name="delete" value="<%=delete%>" />
     	 <input type="hidden" name="update" value="<%=update%>" />
     	 <input type="hidden" name="create" value="<%=create%>" />
     	 <input type="hidden" name="read" value="<%=read%>" />
     	 <input type="hidden" name="rolesNumber" value="<%=roleNum%>" />
-    	 <input type="submit" value="Szukaj" class="okbutton"/>
     	 </form>   
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
