@@ -95,7 +95,7 @@ public class TableUserServlet extends HttpServlet {
 				
 			}else if(typ.equalsIgnoreCase("update")){
 				
-				
+				request.getRequestDispatcher("updateById").forward(request, response);
 				
 			}else{ //if(typ.equalsIgnoreCase("add")){
 				//create

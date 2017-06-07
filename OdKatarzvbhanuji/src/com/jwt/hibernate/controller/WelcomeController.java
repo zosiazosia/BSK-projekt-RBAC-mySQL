@@ -47,6 +47,14 @@ public class WelcomeController extends HttpServlet {
 					+ "<button class='okbutton'>Nowy uzytkownik</button>"
 					+ "</center></form></th>");
 		}
+		if(sessionRole.isUpdateUser()){
+			writer.println("<td><th><form method='post' action='updateById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<button class='okbutton'>Edytuj</button>"
+					+ "</center></form></th></td>");
+		}
+		
 		writer.println("</center></tr><tr><center>");
 		
 		if(sessionRole.isReadRole()){
