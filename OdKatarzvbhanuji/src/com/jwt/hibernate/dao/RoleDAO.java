@@ -150,60 +150,23 @@ public class RoleDAO extends HttpServlet {
 			Transaction trns = session.beginTransaction();          
 			
 			Role admin = new Role("Admin");
-			admin.setCreateAppointment(true);
-			admin.setDeleteAppointment(true);
-			admin.setUpdateAppointment(true);
-			admin.setReadAppointment(true);
-			admin.setCreateClient(true);
-			admin.setDeleteClient(true);
-			admin.setUpdateClient(true);
-			admin.setReadClient(true);
-			admin.setCreateTreatment(true);
-			admin.setDeleteTreatment(true);
-			admin.setUpdateTreatment(true);
-			admin.setReadTreatment(true);
-			admin.setCreateUser(true);
-			admin.setDeleteUser(true);
-			admin.setUpdateUser(true);
-			admin.setReadUser(true);
-			admin.setCreateRole(true);
-			admin.setDeleteRole(true);
-			admin.setUpdateRole(true);
-			admin.setReadRole(true);
-	/*		admin.setCreate(true);
-			admin.setDelete(true);
-			admin.setUpdate(true);
-			admin.setRead(true); */
+			admin.setRoles("CRUD");
+			admin.setAppointments("CRUD");
+			admin.setClients("CRUD");
+			admin.setTreatments("CRUD");
+			admin.setUsers("CRUD");
 			
 			Role role1 = new Role("Recepcjonista");
-			role1.setCreateAppointment(true);
-			role1.setDeleteAppointment(true);
-			role1.setUpdateAppointment(true);
-			role1.setReadAppointment(true);
-			role1.setCreateClient(true);
-			role1.setDeleteClient(true);
-			role1.setUpdateClient(true);
-			role1.setReadClient(true);
-			role1.setCreateTreatment(true);
-			role1.setDeleteTreatment(true);
-			role1.setUpdateTreatment(true);
-			role1.setReadTreatment(true);			
+			role1.setAppointments("CRDU");
+			role1.setClients("CRUD");
+			role1.setTreatments("CRUD");
 			
 			Role role2 = new Role("Asystent");
-			role2.setCreateClient(true);
-			role2.setDeleteClient(true);
-			role2.setUpdateClient(true);
-			role2.setReadClient(true);
-			role2.setCreateAppointment(true);
-			role2.setDeleteAppointment(true);
-			role2.setUpdateAppointment(true);
-			role2.setReadAppointment(true);
+			role2.setAppointments("CRUD");
+			role2.setClients("CRUD");
 			
 			Role role3 = new Role("Dentysta");	
-			role3.setCreateClient(true);
-			role3.setDeleteClient(true);
-			role3.setUpdateClient(true);
-			role3.setReadClient(true);	
+			role3.setClients("CRUD");	
 
 			session.save(admin);
 			session.save(role1);

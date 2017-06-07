@@ -23,74 +23,22 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input placeholder="nazwa" type="text" name="type" value="" class="inputbox" required/></td>
+					<td>Nazwa <input placeholder="nazwa" type="text" name="type" value="" class="inputbox" required/></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="createRole" />Create Roles</br></td>
+					<td>Użytkownicy <input type="text" value="" class="inputbox" name="users"/></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="readRole" />Read Roles</br></td>
+					<td>Klienci <input type="text" value="" class="inputbox" name="clients"/> </td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="updateRole" />Update Roles</br></td>
+					<td>Role <input type="text" value="" class="inputbox" name="roles"/> </td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="deleteRole" />Delete Roles</br></td>
-				</tr>
-				
-				<tr>
-					<td><input type="checkbox" name="createUser" />Create Users</br></td>
+					<td>Wizyty <input type="text" value="" class="inputbox" name="appointments"/> </td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="readUser" />Read Users</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="updateUser" />Update Users</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="deleteUser" />Delete Users</br></td>
-				</tr>
-				
-				
-				<tr>
-					<td><input type="checkbox" name="createClient" />Create Clients</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="readClient" />Read Clients</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="updateClient" />Update Clients</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="deleteClient" />Delete Clients</br></td>
-				</tr>
-				
-				
-				<tr>
-					<td><input type="checkbox" name="createAppointment" />Create Appointments</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="readAppointment" />Read Appointments</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="updateAppointment" />Update Appointments</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="deleteAppointment" />Delete Appointments</br></td>
-				</tr>
-				
-				
-				<tr>
-					<td><input type="checkbox" name="createTreatment" />Create Treatments</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="readTreatment" />Read Treatments</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="updateTreatment" />Update Treatments</br></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="deleteTreatment" />Delete Treatments</br></td>
+					<td>Zabiegi <input type="text" value="" class="inputbox" name="treatments"/> </td>
 				</tr>
 			</tbody>
 		</table>
