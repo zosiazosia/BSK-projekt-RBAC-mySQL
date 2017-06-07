@@ -34,24 +34,30 @@ public class WelcomeController extends HttpServlet {
 						+ "<body> <center><table><tr><center>");
 		
 		if (sessionRole.isReadUser()){
-			//button to users table
 			writer.print("<th><form action='users' method='post'>"
 					+ "<input type='hidden' name='typ' value='read'/>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
-				+	"<input type='submit' value='Tabela uzytkownikow' class='okbutton' /></form></th>" );
+					+ "<input type='submit' value='Tabela uzytkownikow' class='okbutton' /></form></th>" );
 		}
 
-		if(sessionRole.isCreateUser()){
+		if(sessionRole.isCreateUser() && !sessionRole.isReadUser()){
 			writer.println("<th><form method='post' action='register.jsp'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<button class='okbutton'>Nowy uzytkownik</button>"
 					+ "</center></form></th>");
 		}
-		if(sessionRole.isUpdateUser()){
+		if(sessionRole.isUpdateUser() && !sessionRole.isReadUser()){
 			writer.println("<td><th><form method='post' action='updateById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='update'/>"
-					+ "<button class='okbutton'>Edytuj Uzytkownika </button>"
+					+ "<button class='okbutton'>Edytuj uzytkownika </button>"
+					+ "</center></form></th></td>");
+		}
+		if(sessionRole.isDeleteUser() && !sessionRole.isReadUser()){
+			writer.println("<td><th><form method='post' action='updateById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='delete'/>"
+					+ "<button class='okbutton'>Usun uzytkownika </button>"
 					+ "</center></form></th></td>");
 		}
 		
@@ -64,17 +70,25 @@ public class WelcomeController extends HttpServlet {
 				+	"<input type='submit' value='Tabela rol' class='okbutton' /></form></td>" );
 		}
 		
-		if (sessionRole.isCreateRole()){
+		if (sessionRole.isCreateRole() && !sessionRole.isReadRole()){
 			writer.print("<td><form action='addRole' method='post'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+	"<input type='submit' value='Nowa rola' class='okbutton' /></form></td>");
 		}
 		
-		if(sessionRole.isUpdateRole()){
+		if(sessionRole.isUpdateRole() && !sessionRole.isReadRole()){
 			writer.println("<td><th><form method='post' action='updateRoleById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='update'/>"
 					+ "<button class='okbutton'>Edytuj role </button>"
+					+ "</center></form></th></td>");
+		}
+		
+		if(sessionRole.isDeleteRole() && !sessionRole.isReadRole()){
+			writer.println("<td><th><form method='post' action='updateRoleById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='delete'/>"
+					+ "<button class='okbutton'>Usun role </button>"
 					+ "</center></form></th></td>");
 		}
 
@@ -85,18 +99,26 @@ public class WelcomeController extends HttpServlet {
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Tabela klientow' class='okbutton' /></form></td>" );
 		}
-		if(sessionRole.isCreateClient()){
+		if(sessionRole.isCreateClient() && !sessionRole.isReadClient()){
 			writer.println("<td><form method='post' action='newClient.jsp'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<button class='okbutton'>Nowy klient</button>"
 					+ "</form></td>");
 		}
 		
-		if(sessionRole.isUpdateClient()){
+		if(sessionRole.isUpdateClient() && !sessionRole.isReadClient()){
 			writer.println("<td><th><form method='post' action='updateClientById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='update'/>"
 					+ "<button class='okbutton'>Edytuj klienta </button>"
+					+ "</center></form></th></td>");
+		}
+
+		if(sessionRole.isDeleteClient() && !sessionRole.isReadClient()){
+			writer.println("<td><th><form method='post' action='updateClientById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='delete'/>"
+					+ "<button class='okbutton'>Usun klienta </button>"
 					+ "</center></form></th></td>");
 		}
 		
@@ -107,17 +129,24 @@ public class WelcomeController extends HttpServlet {
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Tabela wizyt' class='okbutton' /></form></td>" );
 		}
-		if(sessionRole.isCreateAppointment()){
+		if(sessionRole.isCreateAppointment() && !sessionRole.isReadAppointment()){
 			writer.print("<td><form action='addAppointment' method='post'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Nowa wizyta' class='okbutton' /></form></td>" );
 		}
-		if(sessionRole.isUpdateAppointment()){
+		if(sessionRole.isUpdateAppointment() && !sessionRole.isReadAppointment()){
 			writer.println("<td><th><form method='post' action='updateAppointmentById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='update'/>"
 					+ "<button class='okbutton'>Edytuj wizyte </button>"
+					+ "</center></form></th></td>");
+		}
+		if(sessionRole.isDeleteAppointment() && !sessionRole.isReadAppointment()){
+			writer.println("<td><th><form method='post' action='updateAppointmentById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='delete'/>"
+					+ "<button class='okbutton'>Usun wizyte </button>"
 					+ "</center></form></th></td>");
 		}
 		writer.println("</center></tr><tr><center>");
@@ -128,17 +157,24 @@ public class WelcomeController extends HttpServlet {
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Tabela zabiegow' class='okbutton' /></form></td>" );
 		}
-		if(sessionRole.isCreateTreatment()){
+		if(sessionRole.isCreateTreatment() && !sessionRole.isReadTreatment()){
 			writer.print("<td><form action='addTreatment' method='post'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Nowy zabieg' class='okbutton' /></form></td>" );
 		}
-		if(sessionRole.isUpdateTreatment()){
+		if(sessionRole.isUpdateTreatment() && !sessionRole.isReadTreatment()){
 			writer.println("<td><th><form method='post' action='updateTreatmentById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='update'/>"
 					+ "<button class='okbutton'>Edytuj zabieg </button>"
+					+ "</center></form></th></td>");
+		}
+		if(sessionRole.isDeleteTreatment() && !sessionRole.isReadTreatment()){
+			writer.println("<td><th><form method='post' action='updateTreatmentById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<button class='okbutton'>Usun zabieg </button>"
 					+ "</center></form></th></td>");
 		}
 		
@@ -150,9 +186,3 @@ public class WelcomeController extends HttpServlet {
 		writer.print("</center>" + "</body>" + "</html>");
 	}
 }
-
-
-/*
-select u.id, u.login, u.activeRoleString, ur.user_id, r.type from user u,
- user_role ur, role r where u.id=ur.user_id and r.id=ur.role_id;
-*/

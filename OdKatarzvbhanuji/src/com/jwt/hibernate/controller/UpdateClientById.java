@@ -32,21 +32,35 @@ public class UpdateClientById extends HttpServlet {
 			
 			PrintWriter writer = response.getWriter();
 			writer.println("<html> <link href='css/login.css' rel='stylesheet' type='text/css' />"
-					+ "<head>"
-							+ "<title>Strona glowna</title></head>" 
-							+ "<body> <center><table><tr><center>");
+					+ "<head>");
 			
-			
-			//button to users table
-			writer.print("<th><form action='updateClient' method='post'>"
-					+ "<input type='hidden' name='typ' value='update'/>"
-					+ "<input type='hidden' name='currentSessionUser' value=" + userr + " />"
-					+ "<input name='id' value=''/>"
-				+	"<input type='submit' value='Edytuj' class='okbutton' /></form></th>" );
-			
+			if (typ.equals("update")){
+				writer.println("<title>Edycja klienta</title></head>" 
+						+ "<body> <center><table><tr><center>");
+				
+				writer.print("<th><form action='updateClient' method='post'>"
+						+ "<input type='hidden' name='typ' value='update'/>"
+						+ "<input type='hidden' name='currentSessionUser' value=" + userr + " />"
+						+ "Podaj ID klienta: </br><input name='id' value=''/>"
+						+ "<input type='submit' value='Edytuj' class='okbutton' /></form></th>" );
+			}
+			if (typ.equals("delete")){
+				writer.println("<title>Usuwanie klienta</title></head>" 
+						+ "<body> <center><table><tr><center>");
+				writer.print("<th><form action='deleteClient' method='post'>"
+						+ "<input type='hidden' name='typ' value='delete'/>"
+						+ "<input type='hidden' name='currentSessionUser' value=" + userr + " />"
+						+ "Podaj ID klienta: </br><input name='id' value=''/>"
+						+ "<input type='submit' value='Usun' class='okbutton' /></form></th>" );				
+			}
 			//button to logout
-			writer.print("</center></tr></table><form action='logout' method='post'>"
-				+ 	"<input type='submit' value='Logout' class='okbutton' /></form>" );
+			writer.print("</center></tr></table>"
+						+ "<form method='get' action='welcome'> "
+						+ "<input type='hidden' name='currentActiveUser' value='" + userr + "' />"
+						+ "<input type='submit' value='Powrot' class='okbutton' />" 
+						+ "</form>"
+						+ "<form action='logout' method='post'>"
+						+ "<input type='submit' value='Logout' class='okbutton' /></form>" );
 			
 			
 			writer.print("</center>" + "</body>" + "</html>");	

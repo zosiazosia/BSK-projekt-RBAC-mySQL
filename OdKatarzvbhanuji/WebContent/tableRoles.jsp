@@ -53,8 +53,6 @@
 				
 				RoleDAO rDAO = new RoleDAO();
 				Role role = rDAO.getRole(stringRole);
-				System.out.println("select : " + select);
-				System.out.println("rola : " + stringRole);
 				
 				if (select != "" && select != null){
 					if (role.getType().contains(select)){

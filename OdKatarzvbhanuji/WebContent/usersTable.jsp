@@ -81,7 +81,7 @@
             </c:if>
             
             <c:if test="${not empty create}">
-	            <form method="post" action="users">
+	            <form method="post" action="regi">
 	                <input type="hidden" name="typ" value="add"/>
 	                <input type='submit' value='Nowy uzytkownik' class='okbutton' />             				
 				</form>

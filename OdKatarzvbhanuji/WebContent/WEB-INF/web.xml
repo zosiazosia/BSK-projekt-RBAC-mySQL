@@ -153,6 +153,38 @@
 		<servlet-name>UpdateRole</servlet-name>
 		<url-pattern>/updateRole</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<display-name>DeleteRole</display-name>
+		<servlet-name>DeleteRole</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.DeleteRoleById</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteRole</servlet-name>
+		<url-pattern>/deleteRole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>DeleteClient</display-name>
+		<servlet-name>DeleteClient</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.DeleteClientById</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteClient</servlet-name>
+		<url-pattern>/deleteClient</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<display-name>DeleteUser</display-name>
+		<servlet-name>DeleteUser</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.DeleteUserById</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteUser</servlet-name>
+		<url-pattern>/deleteUser</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<display-name>RoleUpdated</display-name>
 		<servlet-name>RoleUpdated</servlet-name>

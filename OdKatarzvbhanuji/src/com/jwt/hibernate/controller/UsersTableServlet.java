@@ -83,14 +83,7 @@ public class UsersTableServlet extends HttpServlet {
 				UserDAO u = new UserDAO();
 				u.delete(id);
 				List<User> users = u.fetchAll();
-				
-			/*	if (search != null && search != ""){
-					for (User user : users){
-						if(!user.getName().contains(search)){
-							users.remove(user);
-						}
-					}
-				}*/
+			
 				
 				request.setAttribute("usersList", users);
 				request.getRequestDispatcher("tabelki").forward(request, response);
