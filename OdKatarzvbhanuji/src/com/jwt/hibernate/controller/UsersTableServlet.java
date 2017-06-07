@@ -33,7 +33,6 @@ public class UsersTableServlet extends HttpServlet {
 			String sessionRoleString = userr.getActiveRoleString();
 			RoleDAO rc = new RoleDAO();
 			Role sessionRole = rc.getRole(sessionRoleString);
-			String search2 = (String) session.getAttribute("search");
 			String search = request.getParameter("search");
 			
 			
@@ -115,10 +114,6 @@ public class UsersTableServlet extends HttpServlet {
 							iterator.remove();
 						}
 					}
-				}
-				System.out.println(search);
-				for(User user : users){
-					System.out.println(user.getName());
 				}
 				request.setAttribute("usersList", users);
 				request.getRequestDispatcher("tabelki").forward(request, response);

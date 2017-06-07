@@ -3,6 +3,7 @@ package com.jwt.hibernate.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -34,6 +35,7 @@ public class TableClientServlet extends HttpServlet {
 			String sessionRoleString = userr.getActiveRoleString();
 			RoleDAO rc = new RoleDAO();
 			Role sessionRole = rc.getRole(sessionRoleString);
+			String search = request.getParameter("search");
 			
 			
 			if (sessionRole.isCreateClient()){
@@ -89,6 +91,15 @@ public class TableClientServlet extends HttpServlet {
 				
 				for(Client client : clients){
 					System.out.println(client.getName());
+				}
+				if (search != null && search != ""){
+					Iterator<Client> iterator = clients.iterator();
+					while(iterator.hasNext()){
+						Client user = iterator.next();
+						if(!user.getName().contains(search)){
+							iterator.remove();
+						}
+					}
 				}
 				
 				request.setAttribute("clientsList", clients);

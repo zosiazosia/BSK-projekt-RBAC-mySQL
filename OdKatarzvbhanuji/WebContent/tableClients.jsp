@@ -26,7 +26,14 @@
                 There are no clients
             </c:if>
             <c:if test="${not empty clientsList}">   
-            	            	
+         <form method="post" action="clients">  
+         <input type="text" name="search" placeholder="wyszukaj" class="inputbox" onchange="this.form.submit()"/>
+    	 <input type="hidden" name="clientsList" value="${clientsList}" />
+    	 <input type="hidden" name="delete" value="${delete}" />
+    	 <input type="hidden" name="update" value="${update}" />
+    	 <input type="hidden" name="create" value="${create}" />
+    	 <input type="hidden" name="typ" value="read" />
+    	 </form>     	
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>
