@@ -49,10 +49,13 @@
 			%>
 			<input type="hidden" name="<%=rolesTable[i] %>" value="<%=stringRole %>"/>
 			<%
-			if (stringRole != null){
+			if (stringRole != null && !stringRole.equals("null")){
+				
 				RoleDAO rDAO = new RoleDAO();
 				Role role = rDAO.getRole(stringRole);
 				System.out.println("select : " + select);
+				System.out.println("rola : " + stringRole);
+				
 				if (select != "" && select != null){
 					if (role.getType().contains(select)){
 						roles.add(role);

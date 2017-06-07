@@ -48,10 +48,12 @@ public class RoleDAO extends HttpServlet {
 		catch (Exception e){
 	        e.printStackTrace();
 	        System.out.println("error creating users list");
+	        return null;
 	    } finally {
 	        s.flush();
 	        s.close();
 	    }
+		if (rolesList.isEmpty()) return null;
 		return rolesList.get(0);
 	}
 	public Role getRole(Long id){
