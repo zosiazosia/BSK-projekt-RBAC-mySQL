@@ -27,31 +27,18 @@ public class NewRole extends HttpServlet {
 		Role role = new Role();
 		
 		role.setType(request.getParameter("type"));
+
+		String roles = request.getParameter("roles");
+		String users = request.getParameter("users");
+		String clients = request.getParameter("clients");
+		String appointments = request.getParameter("appointments");
+		String treatments = request.getParameter("treatments");
 		
-		role.setCreateRole(request.getParameter("createRole") != null);
-		role.setReadRole(request.getParameter("readRole") != null);
-		role.setUpdateRole(request.getParameter("updateRole") != null);
-		role.setDeleteRole(request.getParameter("deleteRole") != null);
-
-		role.setCreateUser(request.getParameter("createUser") != null);
-		role.setReadUser(request.getParameter("readUser") != null);
-		role.setUpdateUser(request.getParameter("updateUser") != null);
-		role.setDeleteUser(request.getParameter("deleteUser") != null);
-
-		role.setCreateClient(request.getParameter("createClient") != null);
-		role.setReadClient(request.getParameter("readClient") != null);
-		role.setUpdateClient(request.getParameter("updateClient") != null);
-		role.setDeleteClient(request.getParameter("deleteClient") != null);
-
-		role.setCreateAppointment(request.getParameter("createAppointment") != null);
-		role.setReadAppointment(request.getParameter("readAppointment") != null);
-		role.setUpdateAppointment(request.getParameter("updateAppointment") != null);
-		role.setDeleteAppointment(request.getParameter("deleteAppointment") != null);
-
-		role.setCreateTreatment(request.getParameter("createTreatment") != null);
-		role.setReadTreatment(request.getParameter("readTreatment") != null);
-		role.setUpdateTreatment(request.getParameter("updateTreatment") != null);
-		role.setDeleteTreatment(request.getParameter("deleteTreatment") != null);
+		role.setAppointments(appointments);
+		role.setClients(clients);
+		role.setRoles(roles);
+		role.setTreatments(treatments);
+		role.setUsers(users);
 		
 		session.save(role);
 		trns.commit();

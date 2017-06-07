@@ -12,63 +12,23 @@ public class Role implements java.io.Serializable {
 	private Long id;
 	private String type;
 	
-	private boolean createRole;
-	private boolean readRole;
-	private boolean updateRole;
-	private boolean deleteRole;
-
+	private String roles;
+	private String clients;
+	private String users;
+	private String appointments;
+	private String treatments;
 	
-	private boolean createUser;
-	private boolean readUser;
-	private boolean updateUser;
-	private boolean deleteUser;
 
-	private boolean createClient;
-	private boolean readClient;
-	private boolean updateClient;
-	private boolean deleteClient;
-
-
-	private boolean createAppointment;
-	private boolean readAppointment;
-	private boolean updateAppointment;
-	private boolean deleteAppointment;
-
-	private boolean createTreatment;
-	private boolean readTreatment;
-	private boolean updateTreatment;
-	private boolean deleteTreatment;
-
-	
 	public Role() {
 	}
 	public Role(String type){
 		this.type = type;
-		this.createRole = false;
-		this.readRole = false;
-		this.updateRole = false;
-		this.deleteRole = false;
-		
-		this.createUser = false;
-		this.readUser = false;
-		this.updateUser = false;
-		this.deleteUser = false;
-		
-		this.createClient = false;
-		this.readClient = false;
-		this.updateClient = false;
-		this.deleteClient = false;
-
-		this.createAppointment = false;
-		this.readAppointment = false;
-		this.updateAppointment = false;
-		this.deleteAppointment = false;
-
-		this.createTreatment = false;
-		this.readTreatment = false;
-		this.updateTreatment = false;
-		this.deleteTreatment = false;
-
+		this.roles = "";
+		this.clients = "";
+		this.appointments = "";
+		this.treatments = "";
+		this.users = "";
+	
 	}
 	
 	
@@ -88,124 +48,101 @@ public class Role implements java.io.Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public boolean isCreateRole() {
-		return createRole;
+	
+	public String getUsers(){
+		return this.users;
 	}
-	public void setCreateRole(boolean createRole) {
-		this.createRole = createRole;
+	public void setUsers(String u){
+		this.users = u;
+	}
+	public String getClients(){
+		return this.clients;
+	}
+	public void setClients (String c){
+		this.clients = c;
+	}
+	public String getAppointments(){
+		return this.appointments;
+	}
+	public void setAppointments (String a){
+		this.appointments = a;
+	}
+	public String getTreatments(){
+		return this.treatments;
+	}
+	public void setTreatments (String t){
+		this.treatments = t;
+	}
+	public String getRoles(){
+		return this.roles;
+	}
+	public void setRoles (String r){
+		this.roles = r;
+	}
+	
+	
+	public boolean isCreateRole() {
+		return this.roles.contains("C");
 	}
 	public boolean isReadRole() {
-		return readRole;
-	}
-	public void setReadRole(boolean readRole) {
-		this.readRole = readRole;
+		return this.roles.contains("R");
 	}
 	public boolean isUpdateRole() {
-		return updateRole;
-	}
-	public void setUpdateRole(boolean updateRole) {
-		this.updateRole = updateRole;
+		return this.roles.contains("U");
 	}
 	public boolean isDeleteRole() {
-		return deleteRole;
+		return this.roles.contains("D");
 	}
-	public void setDeleteRole(boolean deleteRole) {
-		this.deleteRole = deleteRole;
+	
+	public boolean isCreateUser() {
+		return this.users.contains("C");
 	}
 	public boolean isReadUser() {
-		return readUser;
-	}
-	public void setReadUser(boolean readUser) {
-		this.readUser = readUser;
-	}
-	public boolean isCreateUser() {
-		return createUser;
-	}
-	public void setCreateUser(boolean createUser) {
-		this.createUser = createUser;
+		return this.users.contains("R");
 	}
 	public boolean isUpdateUser() {
-		return updateUser;
-	}
-	public void setUpdateUser(boolean updateUser) {
-		this.updateUser = updateUser;
+		return this.users.contains("U");
 	}
 	public boolean isDeleteUser() {
-		return deleteUser;
+		return this.users.contains("D");
 	}
-	public void setDeleteUser(boolean deleteUser) {
-		this.deleteUser = deleteUser;
-	}
+	
 	public boolean isCreateClient() {
-		return createClient;
-	}
-	public void setCreateClient(boolean createClient) {
-		this.createClient = createClient;
+		return this.clients.contains("C");
 	}
 	public boolean isReadClient() {
-		return readClient;
-	}
-	public void setReadClient(boolean readClient) {
-		this.readClient = readClient;
+		return this.clients.contains("R");
 	}
 	public boolean isUpdateClient() {
-		return updateClient;
-	}
-	public void setUpdateClient(boolean updateClient) {
-		this.updateClient = updateClient;
+		return this.clients.contains("U");
 	}
 	public boolean isDeleteClient() {
-		return deleteClient;
+		return this.clients.contains("D");
 	}
-	public void setDeleteClient(boolean deleteClient) {
-		this.deleteClient = deleteClient;
-	}
+	
 	public boolean isCreateAppointment() {
-		return createAppointment;
-	}
-	public void setCreateAppointment(boolean createAppointment) {
-		this.createAppointment = createAppointment;
+		return this.appointments.contains("C");
 	}
 	public boolean isReadAppointment() {
-		return readAppointment;
-	}
-	public void setReadAppointment(boolean readAppointment) {
-		this.readAppointment = readAppointment;
+		return this.appointments.contains("R");
 	}
 	public boolean isUpdateAppointment() {
-		return updateAppointment;
-	}
-	public void setUpdateAppointment(boolean updateAppointment) {
-		this.updateAppointment = updateAppointment;
+		return this.appointments.contains("U");
 	}
 	public boolean isDeleteAppointment() {
-		return deleteAppointment;
+		return this.appointments.contains("D");
 	}
-	public void setDeleteAppointment(boolean deleteAppointment) {
-		this.deleteAppointment = deleteAppointment;
-	}
+	
 	public boolean isCreateTreatment() {
-		return createTreatment;
-	}
-	public void setCreateTreatment(boolean createTreatment) {
-		this.createTreatment = createTreatment;
+		return this.treatments.contains("C");
 	}
 	public boolean isReadTreatment() {
-		return readTreatment;
-	}
-	public void setReadTreatment(boolean readTreatment) {
-		this.readTreatment = readTreatment;
+		return this.treatments.contains("R");
 	}
 	public boolean isUpdateTreatment() {
-		return updateTreatment;
-	}
-	public void setUpdateTreatment(boolean updateTreatment) {
-		this.updateTreatment = updateTreatment;
+		return this.treatments.contains("U");
 	}
 	public boolean isDeleteTreatment() {
-		return deleteTreatment;
-	}
-	public void setDeleteTreatment(boolean deleteTreatment) {
-		this.deleteTreatment = deleteTreatment;
+		return this.treatments.contains("D");
 	}
 }
