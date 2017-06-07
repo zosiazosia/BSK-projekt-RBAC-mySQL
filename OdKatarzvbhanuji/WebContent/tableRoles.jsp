@@ -32,22 +32,45 @@
         if (roleNum != null){
 			req = Integer.parseInt(roleNum);
         }
+        String select = request.getParameter("search");
+        
 		String delete = request.getParameter("delete");
     	String update = request.getParameter("update");
     	String create = request.getParameter("create");
     	String read = request.getParameter("read");
 		Set<Role> roles = new HashSet<Role>(0);
-		
+
+   	 %>            	     
+   	 <form method="post" action="tableRoles"> 
+   	 <%
 		String[] rolesTable = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"};
 		for (int i=0; i<req; i++){
 			String stringRole = request.getParameter(rolesTable[i]);
+			%>
+			<input type="hidden" name="<%=rolesTable[i] %>" value="<%=stringRole %>"/>
+			<%
 			if (stringRole != null){
 				RoleDAO rDAO = new RoleDAO();
 				Role role = rDAO.getRole(stringRole);
-				roles.add(role);
+				System.out.println("select : " + select);
+				if (select != "" && select != null){
+					if (role.getType().contains(select)){
+						roles.add(role);
+					}
+				}else{
+					roles.add(role);
+				}
 			}
 		}
-    	 %>            	            	
+		%>
+    	 <input type="text" name="search" placeholder="wyszukaj" class="inputbox"/>
+    	 <input type="hidden" name="delete" value="<%=delete%>" />
+    	 <input type="hidden" name="update" value="<%=update%>" />
+    	 <input type="hidden" name="create" value="<%=create%>" />
+    	 <input type="hidden" name="read" value="<%=read%>" />
+    	 <input type="hidden" name="rolesNumber" value="<%=roleNum%>" />
+    	 <input type="submit" value="Szukaj" class="okbutton"/>
+    	 </form>   
                 <table class="table table-hover table-bordered">
                     <thead style="background-color: #bce8f1;">
                     <tr>
@@ -217,9 +240,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>    
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     
-    <%-- <script src="<c:url value="/resources/js/jquery-2.1.3.js"/>"></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-     --%>
 </div>
 </center>
 </body>

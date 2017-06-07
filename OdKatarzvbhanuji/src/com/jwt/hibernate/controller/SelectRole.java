@@ -45,7 +45,7 @@ public class SelectRole extends HttpServlet{
 					
 					String type = role.getType();
 					
-					writer.print("<tr><th><input type='checkbox' name=" + rolesTable[i++] + " value=" + type + " />" + type + "</th></tr>");
+					writer.print("<tr><th><label><input type='checkbox' name=" + rolesTable[i++] + " value=" + type + " />" + type + "</label></th></tr>");
 					
 				}
 				Integer delete = (Integer) request.getAttribute("delete");

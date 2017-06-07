@@ -201,7 +201,7 @@
 		<servlet-name>LogInController</servlet-name>
 		<url-pattern>/LoggedIn</url-pattern>
 	</servlet-mapping>
-	
+			
 	<servlet>
 		<display-name>Welcome</display-name>
 		<servlet-name>WelcomeController</servlet-name>
