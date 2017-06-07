@@ -51,7 +51,7 @@ public class WelcomeController extends HttpServlet {
 			writer.println("<td><th><form method='post' action='updateById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='update'/>"
-					+ "<button class='okbutton'>Edytuj</button>"
+					+ "<button class='okbutton'>Edytuj Uzytkownika </button>"
 					+ "</center></form></th></td>");
 		}
 		
@@ -68,6 +68,14 @@ public class WelcomeController extends HttpServlet {
 			writer.print("<td><form action='addRole' method='post'>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+	"<input type='submit' value='Nowa rola' class='okbutton' /></form></td>");
+		}
+		
+		if(sessionRole.isUpdateRole()){
+			writer.println("<td><th><form method='post' action='updateRoleById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<button class='okbutton'>Edytuj role </button>"
+					+ "</center></form></th></td>");
 		}
 
 		writer.println("</center></tr><tr><center>");

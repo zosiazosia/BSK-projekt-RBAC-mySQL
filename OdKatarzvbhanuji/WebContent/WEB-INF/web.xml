@@ -364,6 +364,16 @@
 		<url-pattern>/updateById</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<display-name>updateRoleById</display-name>
+		<servlet-name>updateRoleById</servlet-name>
+		<servlet-class>com.jwt.hibernate.controller.UpdateRoleById</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateRoleById</servlet-name>
+		<url-pattern>/updateRoleById</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
