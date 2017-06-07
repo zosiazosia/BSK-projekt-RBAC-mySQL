@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,6 +26,7 @@ import com.jwt.hibernate.bean.Role;
 import com.jwt.hibernate.bean.User;
 import com.jwt.hibernate.dao.ClientDAO;
 import com.jwt.hibernate.dao.HibernateUtil;
+import com.jwt.hibernate.dao.RoleDAO;
 import com.jwt.hibernate.dao.UserDAO;
 
 public class UpdateClient extends HttpServlet {
@@ -41,15 +43,24 @@ public class UpdateClient extends HttpServlet {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		Transaction trns = null;	
 		
+		HttpSession session = request.getSession(false);
+		User userr = new User();
+		userr = (User) session.getAttribute("currentSessionUser");
+		String sessionRoleString = userr.getActiveRoleString();
+		RoleDAO rc = new RoleDAO();
+		Role sessionRole = rc.getRole(sessionRoleString);
+		String none = "";
+		
+		
 		writer.println("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Edycja klienta</title> "
 				+ "<link href='css/login.css' rel='stylesheet' type='text/css' /></head><body><form action='clientUpdated' method='post'>"
 				+ "	<center><table border='0.5'  cellpadding='3'><thead>"
 				+ " <tr><th class='header'>Edycja klienta</th></tr></thead><tbody>"
-				+ "<tr><td>Imie: <input placeholder='imie' type='text' name='name' value=" + client.getName() + " class='inputbox' required/></td></tr>"
-				+ "<tr><td>Nazwisko: <input placeholder='nazwisko' type='text' name='surname' value=" + client.getSurname() + " class='inputbox' required/></td></tr>"
-				+ "<tr><td>PESEL: <input placeholder='pesel' type='text' name='pesel' value=" + client.getPesel() + " class='inputbox'/></td></tr>"
-				+ "<tr><td>Rok urodzenia: <input placeholder='rok urodzenia' type='text' name='birthYear' value=" + client.getBirthYear() + " class='inputbox'/></td></tr>"
-				+ "<tr><td>Telefon: <input placeholder='telefon' type='text' name='phone' value=" + client.getPhone() + " class='inputbox'/></td></tr>");
+				+ "<tr><td>Imie: <input placeholder='imie' type='text' name='name' value='" + (sessionRole.isReadClient() ? client.getName() : none)  + "' class='inputbox' required/></td></tr>"
+				+ "<tr><td>Nazwisko: <input placeholder='nazwisko' type='text' name='surname' value='" + (sessionRole.isReadClient() ? client.getSurname()  : none) + "' class='inputbox' required/></td></tr>"
+				+ "<tr><td>PESEL: <input placeholder='pesel' type='text' name='pesel' value='" +(sessionRole.isReadClient() ?  client.getPesel()  : none) + "' class='inputbox'/></td></tr>"
+				+ "<tr><td>Rok urodzenia: <input placeholder='rok urodzenia' type='text' name='birthYear' value='" +(sessionRole.isReadClient() ?  client.getBirthYear()  : none) + "' class='inputbox'/></td></tr>"
+				+ "<tr><td>Telefon: <input placeholder='telefon' type='text' name='phone' value='" +(sessionRole.isReadClient() ?  client.getPhone() : none)  + "' class='inputbox'/></td></tr>");
 				
 		writer.print("<input type='hidden' name='id' value=" + id + " /></td></tr></tbody></table><p />"
 				+ "<input type='submit' value='Zapisz' class='okbutton' /></center></form></body></html>");

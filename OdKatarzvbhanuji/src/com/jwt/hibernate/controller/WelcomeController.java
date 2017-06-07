@@ -91,6 +91,15 @@ public class WelcomeController extends HttpServlet {
 					+ "<button class='okbutton'>Nowy klient</button>"
 					+ "</form></td>");
 		}
+		
+		if(sessionRole.isUpdateClient()){
+			writer.println("<td><th><form method='post' action='updateClientById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<button class='okbutton'>Edytuj klienta </button>"
+					+ "</center></form></th></td>");
+		}
+		
 		writer.println("</center></tr><tr><center>");
 		if(sessionRole.isReadAppointment()){
 			writer.print("<td><form action='appointments' method='post'>"
@@ -103,6 +112,13 @@ public class WelcomeController extends HttpServlet {
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Nowa wizyta' class='okbutton' /></form></td>" );
+		}
+		if(sessionRole.isUpdateAppointment()){
+			writer.println("<td><th><form method='post' action='updateAppointmentById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<button class='okbutton'>Edytuj wizyte </button>"
+					+ "</center></form></th></td>");
 		}
 		writer.println("</center></tr><tr><center>");
 		
@@ -117,6 +133,13 @@ public class WelcomeController extends HttpServlet {
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
 					+ "<input type='hidden' name='typ' value='read'/>"
 				+	"<input type='submit' value='Nowy zabieg' class='okbutton' /></form></td>" );
+		}
+		if(sessionRole.isUpdateTreatment()){
+			writer.println("<td><th><form method='post' action='updateTreatmentById'><center>"
+					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
+					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<button class='okbutton'>Edytuj zabieg </button>"
+					+ "</center></form></th></td>");
 		}
 		
 		//button to logout
