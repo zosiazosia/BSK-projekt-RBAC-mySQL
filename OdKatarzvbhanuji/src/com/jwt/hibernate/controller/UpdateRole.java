@@ -48,33 +48,33 @@ public class UpdateRole extends HttpServlet {
 			
 			writer.println(	"<tr>"
 						+ 	"<td><input type='checkbox' name='createRole' " 	+ (role.isCreateRole() 	? "checked" : "") + "/>C</td></tr> ");
-			writer.println(	"<tr><td><input type='checkbox' name='updateRole' " 	+ (role.isUpdateRole() 	? "checked" : "") + "/>R</td></tr> ");
-			writer.println(	"<tr><td><input type='checkbox' name='readRole' " 		+ (role.isReadRole() 	? "checked" : "") + "/>U</td></tr> ");
+			writer.println(	"<tr><td><input type='checkbox' name='updateRole' " 	+ (role.isReadRole() 	? "checked" : "") + "/>R</td></tr> ");
+			writer.println(	"<tr><td><input type='checkbox' name='readRole' " 		+ (role.isUpdateRole() 	? "checked" : "") + "/>U</td></tr> ");
 			writer.println(	"<tr><td><input type='checkbox' name='deleteRole' " 	+ (role.isDeleteRole() 	? "checked" : "") + "/>D</td> "
 						+ 	"</tr>");
 
 			writer.println("<tr><td>Tabela uzytkownikow: <td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='createUser' " + (role.isCreateUser() ? "checked" : "") + "/>C</td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='updateUser' " + (role.isUpdateUser() ? "checked" : "") + "/>R</td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='readUser' " + (role.isReadUser() ? "checked" : "") + "/>U</td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='updateUser' " + (role.isReadUser() ? "checked" : "") + "/>R</td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='readUser' " + (role.isUpdateUser() ? "checked" : "") + "/>U</td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='deleteUser' " + (role.isDeleteUser() ? "checked" : "") + "/>D</td></tr>");
 
 			writer.println("<tr><td>Tabela klientow: <td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='createClient' " + (role.isCreateClient() ? "checked" : "") + "/>C</br></td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='updateClient' " + (role.isUpdateClient() ? "checked" : "") + "/>R</br></td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='readClient' " + (role.isReadClient() ? "checked" : "") + "/>U</br></td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='updateClient' " + (role.isReadClient() ? "checked" : "") + "/>R</br></td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='readClient' " + (role.isUpdateClient() ? "checked" : "") + "/>U</br></td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='deleteClient' " + (role.isDeleteClient() ? "checked" : "") + "/>D</br></td></tr>");
 
 			writer.println("<tr><td>Tabela wizyt: <td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='createAppointment' " + (role.isCreateAppointment() ? "checked" : "") + "/>C</br></td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='updateAppointment' " + (role.isUpdateAppointment() ? "checked" : "") + "/>R</br></td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='readAppointment' " + (role.isReadAppointment() ? "checked" : "") + "/>U</br></td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='updateAppointment' " + (role.isReadAppointment() ? "checked" : "") + "/>R</br></td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='readAppointment' " + (role.isUpdateAppointment() ? "checked" : "") + "/>U</br></td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='deleteAppointment' " + (role.isDeleteAppointment() ? "checked" : "") + "/>D</br></td></tr>");
 
 			writer.println("<tr><td>Tabela zabiegow: <td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='createTreatment' " + (role.isCreateTreatment() ? "checked" : "") + "/>C</br></td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='updateTreatment' " + (role.isUpdateTreatment() ? "checked" : "") + "/>R</br></td></tr>");
-			writer.println("<tr><td><input type='checkbox' name='readTreatment' " + (role.isReadTreatment() ? "checked" : "") + "/>U</br></td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='updateTreatment' " + (role.isReadTreatment() ? "checked" : "") + "/>R</br></td></tr>");
+			writer.println("<tr><td><input type='checkbox' name='readTreatment' " + (role.isUpdateTreatment() ? "checked" : "") + "/>U</br></td></tr>");
 			writer.println("<tr><td><input type='checkbox' name='deleteTreatment' " + (role.isDeleteTreatment() ? "checked" : "") + "/>D</br></td></tr>");
 
 			
