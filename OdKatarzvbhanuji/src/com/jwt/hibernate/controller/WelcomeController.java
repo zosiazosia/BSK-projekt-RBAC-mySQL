@@ -173,7 +173,7 @@ public class WelcomeController extends HttpServlet {
 		if(sessionRole.isDeleteTreatment() && !sessionRole.isReadTreatment()){
 			writer.println("<td><th><form method='post' action='updateTreatmentById'><center>"
 					+ "<input type='hidden' name='currentSessionUser' value=" + user + " />"
-					+ "<input type='hidden' name='typ' value='update'/>"
+					+ "<input type='hidden' name='typ' value='delete'/>"
 					+ "<button class='okbutton'>Usun zabieg </button>"
 					+ "</center></form></th></td>");
 		}
