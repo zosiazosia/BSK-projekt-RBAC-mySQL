@@ -135,7 +135,8 @@ public class UserDAO {
 	        e.printStackTrace();
 	        System.out.println("error creating users list");
 	    }
-		
+
+		System.out.println(user.getLogin() + " " + user.getPassword() + " " + resultUsers.get(0).getPassword());
 		if (resultUsers.size() == 1 && resultUsers.get(0).getPassword().equals(password)){
 			String name = "", surname = "";
 			Set<Role> roles = new HashSet<Role>(0);
@@ -311,6 +312,7 @@ public class UserDAO {
 			Transaction trns = session.beginTransaction(); 
 			Encryptor encryptor = new Encryptor();
 			User user = new User("admin", encryptor.encrypt("a"), "Monika", "Aka", "54896321574");
+			System.out.println(user.getLogin() + " " + user.getPassword() + " nieszyfrowane: a");
 			Set<Role> roles = new HashSet<Role>();
 			RoleDAO roleDao = new RoleDAO();
 			roles.add(roleDao.getRole("Admin"));
